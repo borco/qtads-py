@@ -1,0 +1,146 @@
+[build-system]
+requires = [
+    "scikit-build-core>=0.10",
+    # All three pinned to the PySide6 minor the wheels are built for (and the
+    # Qt SDK version in ci.yml) -- see the runtime pin in
+    # [project].dependencies below. Unpinned, a build would pick up whatever
+    # PySide6 is newest on PyPI, against an older Qt SDK.
+    "shiboken6-generator>=6.11,<6.12",
+    "shiboken6>=6.11,<6.12",
+    # Essentials, not the PySide6 meta-package: everything the build reads
+    # from the wheel -- PySide6/lib/cmake/PySide6 (find_package), the
+    # typesystems/ and glue/ for Core/Gui/Widgets, and libpyside6 itself --
+    # ships in Essentials.
+    "PySide6-Essentials>=6.11,<6.12",
+]
+build-backend = "scikit_build_core.build"
+
+
+[project]
+name = "pyside6-qtads-borco"
+version = "5.1.1.0.dev0"
+description = "PySide6 bindings for Qt Advanced Docking System, built from a patched fork"
+readme = "README.md"
+license = "LGPL-2.1-or-later"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Ioan Calin", email = "iborco@gmail.com" },
+]
+keywords = [
+    "pyside6",
+    "qt",
+    "qtads",
+    "docking",
+    "shiboken6",
+]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: C++",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: User Interfaces",
+]
+requires-python = ">=3.11"
+# Essentials, not the `PySide6` meta-package, which would also pull
+# PySide6-Addons (~175 MB, a full Chromium among it) that QtAds never touches.
+# Only QtCore, QtGui and QtWidgets are used.
+#
+# Pinned to one PySide6 minor: the extension calls into shiboken6/PySide6's
+# C++ libraries, whose ABI isn't stable across minor releases (on Linux the
+# soname even carries it: libpyside6.abi3.so.6.11). Patch releases are
+# compatible. Each PySide6 minor needs its own release of this package.
+dependencies = [
+    "PySide6-Essentials>=6.11,<6.12",
+    "shiboken6>=6.11,<6.12",
+]
+
+
+[project.urls]
+Repository = "https://github.com/borco/qtads-py"
+Issues = "https://github.com/borco/qtads-py/issues"
+
+
+[tool.scikit-build]
+cmake.build-type = "Release"
+build-dir = "build/{wheel_tag}"
+wheel.packages = ["src/pyside6_qtads_borco"]
+# The extension is compiled against Python's limited API (FORCE_LIMITED_API
+# in src/pyside6_qtads_borco/bindings/CMakeLists.txt), so one build against
+# the cp311 stable ABI floor works on 3.11+ -- tag the wheel cp311-abi3, same
+# as PySide6's own wheels.
+wheel.py-api = "cp311"
+# Only our own install rules (COMPONENT python): QtAds' CMake also installs
+# its headers, CMake package files and licenses, which don't belong in the
+# wheel.
+install.components = ["python"]
+
+# Dev-only example apps; not part of the published sdist/wheel.
+sdist.exclude = ["examples"]
+
+
+[dependency-groups]
+dev = [
+    "cmake>=3.25",
+    "ninja",
+    "pyright>=1.1.410",
+    "pytest>=8.0",
+    "pytest-qt>=4.4",
+    "ruff>=0.8",
+    "scikit-build-core>=0.10",
+    "shiboken6-generator>=6.11,<6.12",
+]
+docs = [
+    "mkdocs>=1.6",
+    "mkdocs-material>=9.5",
+]
+
+
+# ---------------------------------------------------------------------------
+# uv — development environment
+# ---------------------------------------------------------------------------
+
+# Build without an isolated env: the CMake configure step needs to find the
+# PySide6/shiboken6 CMake packages from the *same* Python environment as the
+# one the extension is imported from, i.e. .venv (an isolated build env would
+# resolve [build-system].requires' PySide6/shiboken6 separately).
+#
+# That build needs scikit-build-core and shiboken6-generator (dev group)
+# already in .venv. uv installs them first only if it can read this
+# project's metadata without building it, which is why [project].version is
+# static rather than dynamic: on a fresh clone a dynamic version made uv
+# build the project first, before scikit-build-core was installed.
+[tool.uv]
+no-build-isolation-package = ["pyside6-qtads-borco"]
+
+
+# ---------------------------------------------------------------------------
+# pytest
+# ---------------------------------------------------------------------------
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+
+# ---------------------------------------------------------------------------
+# pyright — type-checks the public API surface and the tests against it.
+# ---------------------------------------------------------------------------
+
+[tool.pyright]
+include = ["src/pyside6_qtads_borco/__init__.py", "tests"]
+venvPath = "."
+venv = ".venv"
+
+
+# ---------------------------------------------------------------------------
+# ruff
+# ---------------------------------------------------------------------------
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+extend-exclude = ["extern"]
