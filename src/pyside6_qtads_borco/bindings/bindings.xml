@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+     shiboken6 typesystem for the `_pyside6_qtads_borco` extension module.
+
+     The scaffold binds only what a smoke test needs: CDockManager, its base
+     CDockContainerWidget, and the CDockWidget/CDockAreaWidget that
+     addDockWidget() takes and returns. The full API, matching PyPI
+     pyside6-qtads' names and shapes, is #2; mborgerson/pyside6_qtads'
+     src/bindings.xml is the reference for it, and for the ownership rules
+     below.
+
+     The package is the extension's full dotted import path, not its bare
+     name: shiboken uses it for each class's __module__ and its signature
+     strings, which shibokensupport evaluates when reporting a failed call. -->
+<typesystem package="pyside6_qtads_borco._pyside6_qtads_borco">
+    <load-typesystem name="typesystem_widgets.xml" generate="no"/>
+
+    <namespace-type name="ads">
+        <enum-type name="DockWidgetArea" flags="DockWidgetAreas"/>
+        <enum-type name="TitleBarButton"/>
+        <enum-type name="eDragState"/>
+        <enum-type name="eIcon"/>
+        <enum-type name="eBitwiseOperator"/>
+        <enum-type name="eTabIndex"/>
+        <enum-type name="SideBarLocation"/>
+
+        <object-type name="CDockAreaWidget">
+            <enum-type name="eDockAreaFlag" flags="DockAreaFlags"/>
+        </object-type>
+
+        <object-type name="CDockContainerWidget">
+            <modify-function signature="addDockWidget(ads::DockWidgetArea, ads::CDockWidget*, ads::CDockAreaWidget*, int)">
+                <modify-argument index="2">
+                    <parent index="this" action="add"/>
+                </modify-argument>
+            </modify-function>
+        </object-type>
+
+        <object-type name="CDockManager">
+            <enum-type name="eViewMenuInsertionOrder"/>
+            <enum-type name="eConfigFlag" flags="ConfigFlags"/>
+            <enum-type name="eAutoHideFlag" flags="AutoHideFlags"/>
+            <enum-type name="eConfigParam"/>
+            <enum-type name="ColorSchemeMode"/>
+
+            <modify-function signature="CDockManager(QWidget*)">
+                <modify-argument index="1">
+                    <parent index="this" action="add"/>
+                </modify-argument>
+            </modify-function>
+            <modify-function signature="addDockWidget(ads::DockWidgetArea, ads::CDockWidget*, ads::CDockAreaWidget*, int)">
+                <modify-argument index="2">
+                    <parent index="this" action="add"/>
+                </modify-argument>
+            </modify-function>
+        </object-type>
+
+        <object-type name="CDockWidget">
+            <enum-type name="DockWidgetFeature" flags="DockWidgetFeatures"/>
+            <enum-type name="eState"/>
+            <enum-type name="eInsertMode"/>
+            <enum-type name="eMinimumSizeHintMode"/>
+            <enum-type name="eToggleViewActionMode"/>
+            <enum-type name="eToolBarStyleSource"/>
+
+            <!-- std::function: needs a hand-written converter, which is #2's job -->
+            <modify-function signature="setWidgetFactory(ads::CDockWidget::FactoryFunc, ads::CDockWidget::eInsertMode)" remove="all"/>
+            <modify-function signature="setWidget(QWidget*, ads::CDockWidget::eInsertMode)">
+                <modify-argument index="1">
+                    <parent index="this" action="add"/>
+                </modify-argument>
+            </modify-function>
+        </object-type>
+    </namespace-type>
+</typesystem>

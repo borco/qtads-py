@@ -1,0 +1,4 @@
+[submodule "extern/qtads"]
+	path = extern/qtads
+	url = https://github.com/borco/Qt-Advanced-Docking-System.git
+	branch = qtads-py/edba03d0
