@@ -5,9 +5,8 @@ PySide6 bindings for [Qt Advanced Docking System](https://github.com/githubuser0
 [`pyside6-qtads-borco`](https://pypi.org/project/pyside6-qtads-borco/), imported as `pyside6_qtads_borco`.
 
 > [!NOTE]
-> Early development. The repository builds QtAds and a minimal binding (`CDockManager`, `CDockWidget`,
-> `CDockAreaWidget`, `CDockContainerWidget`), but nothing has been released yet: the only version on PyPI is a 0.0.0
-> name reservation.
+> Early development. The repository binds the whole API of `pyside6-qtads` and passes its tests, but nothing has
+> been released yet: the only version on PyPI is a 0.0.0 name reservation.
 
 ## Planned
 

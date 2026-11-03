@@ -2,3 +2,6 @@
 	path = extern/qtads
 	url = https://github.com/borco/Qt-Advanced-Docking-System.git
 	branch = qtads-py/edba03d0
+[submodule "extern/pyside6_qtads"]
+	path = extern/pyside6_qtads
+	url = https://github.com/mborgerson/pyside6_qtads.git

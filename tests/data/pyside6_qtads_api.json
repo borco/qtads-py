@@ -1,0 +1,2084 @@
+{
+  "module": [
+    "AllDockAreas",
+    "AutoHideIcon",
+    "BitwiseAnd",
+    "BitwiseOr",
+    "BottomDockWidgetArea",
+    "CDockAreaTabBar",
+    "CDockAreaTitleBar",
+    "CDockAreaWidget",
+    "CDockComponentsFactory",
+    "CDockContainerWidget",
+    "CDockFocusController",
+    "CDockManager",
+    "CDockOverlay",
+    "CDockOverlayCross",
+    "CDockSplitter",
+    "CDockWidget",
+    "CDockWidgetTab",
+    "CDockingStateReader",
+    "CElidingLabel",
+    "CFloatingDockContainer",
+    "CFloatingDragPreview",
+    "CIconProvider",
+    "CSpacerWidget",
+    "CTitleBarButton",
+    "CenterDockWidgetArea",
+    "DockAreaCloseIcon",
+    "DockAreaMenuIcon",
+    "DockAreaMinimizeIcon",
+    "DockAreaUndockIcon",
+    "DockWidgetArea",
+    "DraggingFloatingWidget",
+    "DraggingInactive",
+    "DraggingMousePressed",
+    "DraggingTab",
+    "IFloatingWidget",
+    "IconCount",
+    "InvalidDockWidgetArea",
+    "LeftDockWidgetArea",
+    "NoDockWidgetArea",
+    "OuterDockAreas",
+    "RightDockWidgetArea",
+    "SideBarBottom",
+    "SideBarLeft",
+    "SideBarNone",
+    "SideBarRight",
+    "SideBarTop",
+    "TabCloseIcon",
+    "TabDefaultInsertIndex",
+    "TabInvalidIndex",
+    "TitleBarButtonAutoHide",
+    "TitleBarButtonClose",
+    "TitleBarButtonMinimize",
+    "TitleBarButtonTabsMenu",
+    "TitleBarButtonUndock",
+    "TopDockWidgetArea",
+    "ads"
+  ],
+  "ads": {
+    "classes": {
+      "CAutoHideDockContainer": {
+        "bases": [
+          "PySide6.QtWidgets.QFrame"
+        ],
+        "members": {
+          "addDockWidget": [
+            "(self, DockWidget: ads.CDockWidget, /) -> None"
+          ],
+          "autoHideSideBar": [
+            "(self, /) -> ads.CAutoHideSideBar"
+          ],
+          "autoHideTab": [
+            "(self, /) -> ads.CAutoHideTab"
+          ],
+          "cleanupAndDelete": [
+            "(self, /) -> None"
+          ],
+          "collapseView": [
+            "(self, Enable: bool, /) -> None"
+          ],
+          "dockAreaWidget": [
+            "(self, /) -> ads.CDockAreaWidget"
+          ],
+          "dockContainer": [
+            "(self, /) -> ads.CDockContainerWidget"
+          ],
+          "dockWidget": [
+            "(self, /) -> ads.CDockWidget"
+          ],
+          "dragLeaveEvent": [
+            "(self, ev: PySide6.QtGui.QDragLeaveEvent, /) -> None"
+          ],
+          "event": [
+            "(self, event: PySide6.QtCore.QEvent, /) -> bool"
+          ],
+          "eventFilter": [
+            "(self, watched: PySide6.QtCore.QObject, event: PySide6.QtCore.QEvent, /) -> bool"
+          ],
+          "leaveEvent": [
+            "(self, event: PySide6.QtCore.QEvent, /) -> None"
+          ],
+          "moveContentsToParent": [
+            "(self, /) -> None"
+          ],
+          "moveToNewSideBarLocation": [
+            "(self, SideBarLocation: ads.SideBarLocation, /, TabIndex: int = -1) -> None"
+          ],
+          "orientation": [
+            "(self, /) -> PySide6.QtCore.Qt.Orientation"
+          ],
+          "resetToInitialDockWidgetSize": [
+            "(self, /) -> None"
+          ],
+          "resizeEvent": [
+            "(self, event: PySide6.QtGui.QResizeEvent, /) -> None"
+          ],
+          "saveState": [
+            "(self, Stream: PySide6.QtCore.QXmlStreamWriter, /) -> None"
+          ],
+          "setSideBarLocation": [
+            "(self, SideBarLocation: ads.SideBarLocation, /) -> None"
+          ],
+          "setSize": [
+            "(self, Size: int, /) -> None"
+          ],
+          "sideBarLocation": [
+            "(self, /) -> ads.SideBarLocation"
+          ],
+          "staticMetaObject": [],
+          "tabIndex": [
+            "(self, /) -> int"
+          ],
+          "toggleCollapseState": [
+            "(self, /) -> None"
+          ],
+          "toggleView": [
+            "(self, Enable: bool, /) -> None"
+          ],
+          "updateSize": [
+            "(self, /) -> None"
+          ]
+        },
+        "signals": [],
+        "enums": {}
+      },
+      "CAutoHideSideBar": {
+        "bases": [
+          "PySide6.QtWidgets.QScrollArea"
+        ],
+        "members": {
+          "addAutoHideWidget": [
+            "(self, AutoHideWidget: ads.CAutoHideDockContainer, /, Index: int = 'ads.eTabIndex.TabDefaultInsertIndex') -> None"
+          ],
+          "count": [
+            "(self, /) -> int"
+          ],
+          "dockContainer": [
+            "(self, /) -> ads.CDockContainerWidget"
+          ],
+          "eventFilter": [
+            "(self, watched: PySide6.QtCore.QObject, event: PySide6.QtCore.QEvent, /) -> bool"
+          ],
+          "hasVisibleTabs": [
+            "(self, /) -> bool"
+          ],
+          "indexOfTab": [
+            "(self, Tab: ads.CAutoHideTab, /) -> int"
+          ],
+          "insertDockWidget": [
+            "(self, Index: int, DockWidget: ads.CDockWidget, /) -> ads.CAutoHideDockContainer"
+          ],
+          "insertTab": [
+            "(self, Index: int, SideTab: ads.CAutoHideTab, /) -> None"
+          ],
+          "minimumSizeHint": [
+            "(self, /) -> PySide6.QtCore.QSize"
+          ],
+          "orientation": [
+            "(self, /) -> PySide6.QtCore.Qt.Orientation"
+          ],
+          "removeAutoHideWidget": [
+            "(self, AutoHideWidget: ads.CAutoHideDockContainer, /) -> None"
+          ],
+          "removeTab": [
+            "(self, SideTab: ads.CAutoHideTab, /) -> None"
+          ],
+          "saveState": [
+            "(self, Stream: PySide6.QtCore.QXmlStreamWriter, /) -> None"
+          ],
+          "setSpacing": [
+            "(self, Spacing: int, /) -> None"
+          ],
+          "sideBarLocation": [
+            "(self, /) -> ads.SideBarLocation"
+          ],
+          "sizeHint": [
+            "(self, /) -> PySide6.QtCore.QSize"
+          ],
+          "spacing": [
+            "(self, /) -> int"
+          ],
+          "staticMetaObject": [],
+          "tab": [
+            "(self, index: int, /) -> ads.CAutoHideTab"
+          ],
+          "tabAt": [
+            "(self, Pos: PySide6.QtCore.QPoint, /) -> int"
+          ],
+          "tabInsertIndexAt": [
+            "(self, Pos: PySide6.QtCore.QPoint, /) -> int"
+          ],
+          "visibleTabCount": [
+            "(self, /) -> int"
+          ],
+          "wheelEvent": [
+            "(self, e: PySide6.QtGui.QWheelEvent, /) -> None"
+          ]
+        },
+        "signals": [],
+        "enums": {}
+      },
+      "CAutoHideTab": {
+        "bases": [
+          "ads.CPushButton"
+        ],
+        "members": {
+          "contextMenuEvent": [
+            "(self, ev: PySide6.QtGui.QContextMenuEvent, /) -> None"
+          ],
+          "dockWidget": [
+            "(self, /) -> ads.CDockWidget"
+          ],
+          "dragEnterEvent": [
+            "(self, ev: PySide6.QtGui.QDragEnterEvent, /) -> None"
+          ],
+          "dragLeaveEvent": [
+            "(self, ev: PySide6.QtGui.QDragLeaveEvent, /) -> None"
+          ],
+          "event": [
+            "(self, event: PySide6.QtCore.QEvent, /) -> bool"
+          ],
+          "iconOnly": [
+            "(self, /) -> bool"
+          ],
+          "isActiveTab": [
+            "(self, /) -> bool"
+          ],
+          "mouseMoveEvent": [
+            "(self, ev: PySide6.QtGui.QMouseEvent, /) -> None"
+          ],
+          "mousePressEvent": [
+            "(self, ev: PySide6.QtGui.QMouseEvent, /) -> None"
+          ],
+          "mouseReleaseEvent": [
+            "(self, ev: PySide6.QtGui.QMouseEvent, /) -> None"
+          ],
+          "orientation": [
+            "(self, /) -> PySide6.QtCore.Qt.Orientation"
+          ],
+          "removeFromSideBar": [
+            "(self, /) -> None"
+          ],
+          "requestCloseDockWidget": [
+            "(self, /) -> None"
+          ],
+          "setDockWidget": [
+            "(self, DockWidget: ads.CDockWidget, /) -> None"
+          ],
+          "setDockWidgetFloating": [
+            "(self, /) -> None"
+          ],
+          "setOrientation": [
+            "(self, Orientation: PySide6.QtCore.Qt.Orientation, /) -> None"
+          ],
+          "setSideBar": [
+            "(self, SideTabBar: ads.CAutoHideSideBar, /) -> None"
+          ],
+          "sideBar": [
+            "(self, /) -> ads.CAutoHideSideBar"
+          ],
+          "sideBarLocation": [
+            "(self, /) -> ads.SideBarLocation"
+          ],
+          "staticMetaObject": [],
+          "tabIndex": [
+            "(self, /) -> int"
+          ],
+          "unpinDockWidget": [
+            "(self, /) -> None"
+          ],
+          "updateStyle": [
+            "(self, /) -> None"
+          ]
+        },
+        "signals": [],
+        "enums": {}
+      },
+      "CDockAreaTabBar": {
+        "bases": [
+          "PySide6.QtWidgets.QScrollArea"
+        ],
+        "members": {
+          "areTabsOverflowing": [
+            "(self, /) -> bool"
+          ],
+          "closeTab": [
+            "(self, Index: int, /) -> None"
+          ],
+          "count": [
+            "(self, /) -> int"
+          ],
+          "currentChanged": [],
+          "currentChanging": [],
+          "currentIndex": [
+            "(self, /) -> int"
+          ],
+          "currentTab": [
+            "(self, /) -> ads.CDockWidgetTab"
+          ],
+          "elidedChanged": [],
+          "eventFilter": [
+            "(self, watched: PySide6.QtCore.QObject, event: PySide6.QtCore.QEvent, /) -> bool"
+          ],
+          "insertTab": [
+            "(self, Index: int, Tab: ads.CDockWidgetTab, /) -> None"
+          ],
+          "isTabOpen": [
+            "(self, Index: int, /) -> bool"
+          ],
+          "minimumSizeHint": [
+            "(self, /) -> PySide6.QtCore.QSize"
+          ],
+          "removeTab": [
+            "(self, Tab: ads.CDockWidgetTab, /) -> None"
+          ],
+          "removingTab": [],
+          "setCurrentIndex": [
+            "(self, Index: int, /) -> None"
+          ],
+          "sizeHint": [
+            "(self, /) -> PySide6.QtCore.QSize"
+          ],
+          "staticMetaObject": [],
+          "tab": [
+            "(self, Index: int, /) -> ads.CDockWidgetTab"
+          ],
+          "tabAt": [
+            "(self, Pos: PySide6.QtCore.QPoint, /) -> int"
+          ],
+          "tabBarClicked": [],
+          "tabCloseRequested": [],
+          "tabClosed": [],
+          "tabInsertIndexAt": [
+            "(self, Pos: PySide6.QtCore.QPoint, /) -> int"
+          ],
+          "tabInserted": [],
+          "tabMoved": [],
+          "tabOpened": [],
+          "wheelEvent": [
+            "(self, Event: PySide6.QtGui.QWheelEvent, /) -> None"
+          ]
+        },
+        "signals": [
+          "currentChanged(int)",
+          "currentChanging(int)",
+          "elidedChanged(bool)",
+          "removingTab(int)",
+          "tabBarClicked(int)",
+          "tabCloseRequested(int)",
+          "tabClosed(int)",
+          "tabInserted(int)",
+          "tabMoved(int,int)",
+          "tabOpened(int)"
+        ],
+        "enums": {}
+      },
+      "CDockAreaTitleBar": {
+        "bases": [
+          "PySide6.QtWidgets.QFrame"
+        ],
+        "members": {
+          "autoHideTitleLabel": [
+            "(self, /) -> ads.CElidingLabel"
+          ],
+          "buildContextMenu": [
+            "(self, arg__1: PySide6.QtWidgets.QMenu, /) -> PySide6.QtWidgets.QMenu"
+          ],
+          "button": [
+            "(self, which: ads.TitleBarButton, /) -> ads.CTitleBarButton"
+          ],
+          "contextMenuEvent": [
+            "(self, event: PySide6.QtGui.QContextMenuEvent, /) -> None"
+          ],
+          "dockAreaWidget": [
+            "(self, /) -> ads.CDockAreaWidget"
+          ],
+          "indexOf": [
+            "(self, widget: PySide6.QtWidgets.QWidget, /) -> int"
+          ],
+          "insertWidget": [
+            "(self, index: int, widget: PySide6.QtWidgets.QWidget, /) -> None"
+          ],
+          "isAutoHide": [
+            "(self, /) -> bool"
+          ],
+          "markTabsMenuOutdated": [
+            "(self, /) -> None"
+          ],
+          "mouseDoubleClickEvent": [
+            "(self, event: PySide6.QtGui.QMouseEvent, /) -> None"
+          ],
+          "mouseMoveEvent": [
+            "(self, ev: PySide6.QtGui.QMouseEvent, /) -> None"
+          ],
+          "mousePressEvent": [
+            "(self, ev: PySide6.QtGui.QMouseEvent, /) -> None"
+          ],
+          "mouseReleaseEvent": [
+            "(self, ev: PySide6.QtGui.QMouseEvent, /) -> None"
+          ],
+          "resizeEvent": [
+            "(self, event: PySide6.QtGui.QResizeEvent, /) -> None"
+          ],
+          "setAreaFloating": [
+            "(self, /) -> None"
+          ],
+          "setVisible": [
+            "(self, Visible: bool, /) -> None"
+          ],
+          "showAutoHideControls": [
+            "(self, Show: bool, /) -> None"
+          ],
+          "staticMetaObject": [],
+          "tabBar": [
+            "(self, /) -> ads.CDockAreaTabBar"
+          ],
+          "tabBarClicked": [],
+          "titleBarButtonToolTip": [
+            "(self, Button: ads.TitleBarButton, /) -> str"
+          ],
+          "updateDockWidgetActionsButtons": [
+            "(self, /) -> None"
+          ]
+        },
+        "signals": [
+          "tabBarClicked(int)"
+        ],
+        "enums": {}
+      },
+      "CDockAreaWidget": {
+        "bases": [
+          "PySide6.QtWidgets.QFrame"
+        ],
+        "members": {
+          "addDockWidget": [
+            "(self, DockWidget: ads.CDockWidget, /) -> None"
+          ],
+          "allowedAreas": [
+            "(self, /) -> ads.DockWidgetArea"
+          ],
+          "autoHideDockContainer": [
+            "(self, /) -> ads.CAutoHideDockContainer"
+          ],
+          "closeArea": [
+            "(self, /) -> None"
+          ],
+          "closeOtherAreas": [
+            "(self, /) -> None"
+          ],
+          "containsCentralWidget": [
+            "(self, /) -> bool"
+          ],
+          "contentAreaGeometry": [
+            "(self, /) -> PySide6.QtCore.QRect"
+          ],
+          "currentChanged": [],
+          "currentChanging": [],
+          "currentDockWidget": [
+            "(self, /) -> ads.CDockWidget"
+          ],
+          "currentIndex": [
+            "(self, /) -> int"
+          ],
+          "dockAreaFlags": [
+            "(self, /) -> ads.CDockAreaWidget.eDockAreaFlag"
+          ],
+          "dockContainer": [
+            "(self, /) -> ads.CDockContainerWidget"
+          ],
+          "dockManager": [
+            "(self, /) -> ads.CDockManager"
+          ],
+          "dockWidget": [
+            "(self, Index: int, /) -> ads.CDockWidget"
+          ],
+          "dockWidgets": [
+            "(self, /) -> List[ads.CDockWidget]"
+          ],
+          "dockWidgetsCount": [
+            "(self, /) -> int"
+          ],
+          "event": [
+            "(self, event: PySide6.QtCore.QEvent, /) -> bool"
+          ],
+          "features": [
+            "(self, /, Mode: ads.eBitwiseOperator = Instance(ads.eBitwiseOperator.BitwiseAnd)) -> ads.CDockWidget.DockWidgetFeature"
+          ],
+          "hideAreaWithNoVisibleContent": [
+            "(self, /) -> None"
+          ],
+          "index": [
+            "(self, DockWidget: ads.CDockWidget, /) -> int"
+          ],
+          "indexOfFirstOpenDockWidget": [
+            "(self, /) -> int"
+          ],
+          "insertDockWidget": [
+            "(self, index: int, DockWidget: ads.CDockWidget, /, Activate: bool = True) -> None"
+          ],
+          "internalSetCurrentDockWidget": [
+            "(self, DockWidget: ads.CDockWidget, /) -> None"
+          ],
+          "isAutoHide": [
+            "(self, /) -> bool"
+          ],
+          "isCentralWidgetArea": [
+            "(self, /) -> bool"
+          ],
+          "isTopLevelArea": [
+            "(self, /) -> bool"
+          ],
+          "markTitleBarMenuOutdated": [
+            "(self, /) -> None"
+          ],
+          "minimumSizeHint": [
+            "(self, /) -> PySide6.QtCore.QSize"
+          ],
+          "nextOpenDockWidget": [
+            "(self, DockWidget: ads.CDockWidget, /) -> ads.CDockWidget"
+          ],
+          "openDockWidgetsCount": [
+            "(self, /) -> int"
+          ],
+          "openedDockWidgets": [
+            "(self, /) -> List[ads.CDockWidget]"
+          ],
+          "parentSplitter": [
+            "(self, /) -> ads.CDockSplitter"
+          ],
+          "removeDockWidget": [
+            "(self, DockWidget: ads.CDockWidget, /) -> None"
+          ],
+          "saveState": [
+            "(self, Stream: PySide6.QtCore.QXmlStreamWriter, /) -> None"
+          ],
+          "setAllowedAreas": [
+            "(self, areas: ads.DockWidgetArea, /) -> None"
+          ],
+          "setAutoHide": [
+            "(self, Enable: bool, /, Location: ads.SideBarLocation = Instance(ads.SideBarLocation.SideBarNone), TabIndex: int = -1) -> None"
+          ],
+          "setAutoHideDockContainer": [
+            "(self, AutoHideDockContainer: ads.CAutoHideDockContainer, /) -> None"
+          ],
+          "setCurrentDockWidget": [
+            "(self, DockWidget: ads.CDockWidget, /) -> None"
+          ],
+          "setCurrentIndex": [
+            "(self, index: int, /) -> None"
+          ],
+          "setDockAreaFlag": [
+            "(self, Flag: ads.CDockAreaWidget.eDockAreaFlag, On: bool, /) -> None"
+          ],
+          "setDockAreaFlags": [
+            "(self, Flags: ads.CDockAreaWidget.eDockAreaFlag, /) -> None"
+          ],
+          "setFloating": [
+            "(self, /) -> None"
+          ],
+          "setVisible": [
+            "(self, Visible: bool, /) -> None"
+          ],
+          "staticMetaObject": [],
+          "tabBarClicked": [],
+          "titleBar": [
+            "(self, /) -> ads.CDockAreaTitleBar"
+          ],
+          "titleBarButton": [
+            "(self, which: ads.TitleBarButton, /) -> PySide6.QtWidgets.QAbstractButton"
+          ],
+          "titleBarGeometry": [
+            "(self, /) -> PySide6.QtCore.QRect"
+          ],
+          "toggleAutoHide": [
+            "(self, /, Location: ads.SideBarLocation = Instance(ads.SideBarLocation.SideBarNone)) -> None"
+          ],
+          "toggleDockWidgetView": [
+            "(self, DockWidget: ads.CDockWidget, Open: bool, /) -> None"
+          ],
+          "toggleView": [
+            "(self, Open: bool, /) -> None"
+          ],
+          "updateTitleBarButtonVisibility": [
+            "(self, IsTopLevel: bool, /) -> None"
+          ],
+          "updateTitleBarVisibility": [
+            "(self, /) -> None"
+          ],
+          "updateWindowTitle": [
+            "(self, /) -> None"
+          ],
+          "viewToggled": []
+        },
+        "signals": [
+          "currentChanged(int)",
+          "currentChanging(int)",
+          "tabBarClicked(int)",
+          "viewToggled(bool)"
+        ],
+        "enums": {
+          "eDockAreaFlag": [
+            "DefaultFlags",
+            "HideSingleWidgetTitleBar"
+          ]
+        }
+      },
+      "CDockComponentsFactory": {
+        "bases": [
+          "Shiboken.Object"
+        ],
+        "members": {
+          "createDockAreaTabBar": [
+            "(self, DockArea: ads.CDockAreaWidget, /) -> ads.CDockAreaTabBar"
+          ],
+          "createDockAreaTitleBar": [
+            "(self, DockArea: ads.CDockAreaWidget, /) -> ads.CDockAreaTitleBar"
+          ],
+          "createDockWidgetSideTab": [
+            "(self, DockWidget: ads.CDockWidget, /) -> ads.CAutoHideTab"
+          ],
+          "createDockWidgetTab": [
+            "(self, DockWidget: ads.CDockWidget, /) -> ads.CDockWidgetTab"
+          ],
+          "resetDefaultFactory": [
+            "() -> None"
+          ],
+          "setFactory": [
+            "(Factory: ads.CDockComponentsFactory, /) -> None"
+          ]
+        },
+        "signals": [],
+        "enums": {}
+      },
+      "CDockContainerWidget": {
+        "bases": [
+          "PySide6.QtWidgets.QFrame"
+        ],
+        "members": {
+          "addDockArea": [
+            "(self, DockAreaWidget: ads.CDockAreaWidget, /, area: ads.DockWidgetArea = Instance(ads.CenterDockWidgetArea)) -> None"
+          ],
+          "addDockWidget": [
+            "(self, area: ads.DockWidgetArea, Dockwidget: ads.CDockWidget, /, DockAreaWidget: ads.CDockAreaWidget | None = None, Index: int = -1) -> ads.CDockAreaWidget"
+          ],
+          "autoHideSideBar": [
+            "(self, area: ads.SideBarLocation, /) -> ads.CAutoHideSideBar"
+          ],
+          "autoHideWidgetCreated": [],
+          "autoHideWidgets": [
+            "(self, /) -> List[ads.CAutoHideDockContainer]"
+          ],
+          "closeOtherAreas": [
+            "(self, KeepOpenArea: ads.CDockAreaWidget, /) -> None"
+          ],
+          "contentRect": [
+            "(self, /) -> PySide6.QtCore.QRect"
+          ],
+          "contentRectGlobal": [
+            "(self, /) -> PySide6.QtCore.QRect"
+          ],
+          "createAndSetupAutoHideContainer": [
+            "(self, area: ads.SideBarLocation, DockWidget: ads.CDockWidget, /, TabIndex: int = -1) -> ads.CAutoHideDockContainer"
+          ],
+          "createRootSplitter": [
+            "(self, /) -> None"
+          ],
+          "createSideTabBarWidgets": [
+            "(self, /) -> None"
+          ],
+          "dockArea": [
+            "(self, Index: int, /) -> ads.CDockAreaWidget"
+          ],
+          "dockAreaAt": [
+            "(self, GlobalPos: PySide6.QtCore.QPoint, /) -> ads.CDockAreaWidget"
+          ],
+          "dockAreaCount": [
+            "(self, /) -> int"
+          ],
+          "dockAreaViewToggled": [],
+          "dockAreasAdded": [],
+          "dockAreasRemoved": [],
+          "dockManager": [
+            "(self, /) -> ads.CDockManager"
+          ],
+          "dockWidgets": [
+            "(self, /) -> List[ads.CDockWidget]"
+          ],
+          "dragEnterEvent": [
+            "(self, e: PySide6.QtGui.QDragEnterEvent, /) -> None"
+          ],
+          "dragLeaveEvent": [
+            "(self, e: PySide6.QtGui.QDragLeaveEvent, /) -> None"
+          ],
+          "dragMoveEvent": [
+            "(self, e: PySide6.QtGui.QDragMoveEvent, /) -> None"
+          ],
+          "dropEvent": [
+            "(self, e: PySide6.QtGui.QDropEvent, /) -> None"
+          ],
+          "dropFloatingWidget": [
+            "(self, FloatingWidget: ads.CFloatingDockContainer, TargetPos: PySide6.QtCore.QPoint, /) -> None"
+          ],
+          "dropWidget": [
+            "(self, Widget: PySide6.QtWidgets.QWidget, DropArea: ads.DockWidgetArea, TargetAreaWidget: ads.CDockAreaWidget, /, TabIndex: int = -1) -> None"
+          ],
+          "dumpLayout": [
+            "(self, /) -> None"
+          ],
+          "event": [
+            "(self, e: PySide6.QtCore.QEvent, /) -> bool"
+          ],
+          "features": [
+            "(self, /) -> ads.CDockWidget.DockWidgetFeature"
+          ],
+          "floatingWidget": [
+            "(self, /) -> ads.CFloatingDockContainer"
+          ],
+          "floatingWidgetFromDropEvent": [
+            "(e: PySide6.QtGui.QDropEvent, DockManager: ads.CDockManager, /) -> ads.CFloatingDockContainer"
+          ],
+          "handleAutoHideWidgetEvent": [
+            "(self, e: PySide6.QtCore.QEvent, w: PySide6.QtWidgets.QWidget, /) -> None"
+          ],
+          "hasOpenDockAreas": [
+            "(self, /) -> bool"
+          ],
+          "hasTopLevelDockWidget": [
+            "(self, /) -> bool"
+          ],
+          "isFloating": [
+            "(self, /) -> bool"
+          ],
+          "isInFrontOf": [
+            "(self, Other: ads.CDockContainerWidget, /) -> bool"
+          ],
+          "lastAddedDockAreaWidget": [
+            "(self, area: ads.DockWidgetArea, /) -> ads.CDockAreaWidget"
+          ],
+          "openedDockAreas": [
+            "(self, /) -> List[ads.CDockAreaWidget]"
+          ],
+          "openedDockWidgets": [
+            "(self, /) -> List[ads.CDockWidget]"
+          ],
+          "registerAutoHideWidget": [
+            "(self, AutoHideWidget: ads.CAutoHideDockContainer, /) -> None"
+          ],
+          "removeAutoHideWidget": [
+            "(self, AutoHideWidget: ads.CAutoHideDockContainer, /) -> None"
+          ],
+          "removeDockArea": [
+            "(self, area: ads.CDockAreaWidget, /) -> None"
+          ],
+          "removeDockWidget": [
+            "(self, Dockwidget: ads.CDockWidget, /) -> None"
+          ],
+          "rootSplitter": [
+            "(self, /) -> ads.CDockSplitter"
+          ],
+          "saveState": [
+            "(self, Stream: PySide6.QtCore.QXmlStreamWriter, /) -> None"
+          ],
+          "showDropOverlays": [
+            "(DockManager: ads.CDockManager, TopContainer: ads.CDockContainerWidget, GlobalPos: PySide6.QtCore.QPoint, ContentPinnable: bool, /) -> None"
+          ],
+          "staticMetaObject": [],
+          "topLevelDockArea": [
+            "(self, /) -> ads.CDockAreaWidget"
+          ],
+          "topLevelDockWidget": [
+            "(self, /) -> ads.CDockWidget"
+          ],
+          "updateSplitterHandles": [
+            "(self, splitter: PySide6.QtWidgets.QSplitter, /) -> None"
+          ],
+          "visibleDockAreaCount": [
+            "(self, /) -> int"
+          ],
+          "zOrderIndex": [
+            "(self, /) -> int"
+          ]
+        },
+        "signals": [
+          "autoHideWidgetCreated(ads::CAutoHideDockContainer*)",
+          "dockAreaViewToggled(ads::CDockAreaWidget*,bool)",
+          "dockAreasAdded()",
+          "dockAreasRemoved()"
+        ],
+        "enums": {}
+      },
+      "CDockFocusController": {
+        "bases": [
+          "PySide6.QtCore.QObject"
+        ],
+        "members": {
+          "clearDockWidgetFocus": [
+            "(self, dockWidget: ads.CDockWidget, /) -> None"
+          ],
+          "focusedDockArea": [
+            "(self, /) -> ads.CDockAreaWidget"
+          ],
+          "focusedDockWidget": [
+            "(self, /) -> ads.CDockWidget"
+          ],
+          "notifyFloatingWidgetDrop": [
+            "(self, FloatingWidget: ads.CFloatingDockContainer, /) -> None"
+          ],
+          "notifyWidgetOrAreaRelocation": [
+            "(self, RelocatedWidget: PySide6.QtWidgets.QWidget, /) -> None"
+          ],
+          "setDockWidgetFocused": [
+            "(self, focusedNow: ads.CDockWidget, /) -> None"
+          ],
+          "setDockWidgetTabFocused": [
+            "(self, Tab: ads.CDockWidgetTab, /) -> None"
+          ],
+          "setDockWidgetTabPressed": [
+            "(self, Value: bool, /) -> None"
+          ],
+          "staticMetaObject": []
+        },
+        "signals": [],
+        "enums": {}
+      },
+      "CDockManager": {
+        "bases": [
+          "ads.CDockContainerWidget"
+        ],
+        "members": {
+          "addAutoHideDockWidget": [
+            "(self, Location: ads.SideBarLocation, Dockwidget: ads.CDockWidget, /) -> ads.CAutoHideDockContainer"
+          ],
+          "addAutoHideDockWidgetToContainer": [
+            "(self, Location: ads.SideBarLocation, Dockwidget: ads.CDockWidget, DockContainerWidget: ads.CDockContainerWidget, /) -> ads.CAutoHideDockContainer"
+          ],
+          "addDockWidget": [
+            "(self, area: ads.DockWidgetArea, Dockwidget: ads.CDockWidget, /, DockAreaWidget: ads.CDockAreaWidget | None = None, Index: int = -1) -> ads.CDockAreaWidget"
+          ],
+          "addDockWidgetFloating": [
+            "(self, Dockwidget: ads.CDockWidget, /) -> ads.CFloatingDockContainer"
+          ],
+          "addDockWidgetTab": [
+            "(self, area: ads.DockWidgetArea, Dockwidget: ads.CDockWidget, /) -> ads.CDockAreaWidget"
+          ],
+          "addDockWidgetTabToArea": [
+            "(self, Dockwidget: ads.CDockWidget, DockAreaWidget: ads.CDockAreaWidget, /, Index: int = -1) -> ads.CDockAreaWidget"
+          ],
+          "addDockWidgetToContainer": [
+            "(self, area: ads.DockWidgetArea, Dockwidget: ads.CDockWidget, DockContainerWidget: ads.CDockContainerWidget, /) -> ads.CDockAreaWidget"
+          ],
+          "addPerspective": [
+            "(self, UniquePrespectiveName: str, /) -> None"
+          ],
+          "addToggleViewActionToMenu": [
+            "(self, ToggleViewAction: PySide6.QtGui.QAction, /, Group: str = '', GroupIcon: PySide6.QtGui.QIcon | PySide6.QtGui.QPixmap = Default(QIcon)) -> PySide6.QtGui.QAction"
+          ],
+          "autoHideConfigFlags": [
+            "() -> ads.CDockManager.eAutoHideFlag"
+          ],
+          "centralWidget": [
+            "(self, /) -> ads.CDockWidget"
+          ],
+          "changeEvent": [
+            "(self, event: PySide6.QtCore.QEvent, /) -> None"
+          ],
+          "configFlags": [
+            "() -> ads.CDockManager.eConfigFlag"
+          ],
+          "configParam": [
+            "(Param: ads.CDockManager.eConfigParam, Default: Any, /) -> Any"
+          ],
+          "containerOverlay": [
+            "(self, /) -> ads.CDockOverlay"
+          ],
+          "createDockWidget": [
+            "(self, title: str, /, parent: PySide6.QtWidgets.QWidget | None = None) -> ads.CDockWidget"
+          ],
+          "dockAreaCreated": [],
+          "dockAreaOverlay": [
+            "(self, /) -> ads.CDockOverlay"
+          ],
+          "dockContainers": [
+            "(self, /) -> List[ads.CDockContainerWidget]"
+          ],
+          "dockFocusController": [
+            "(self, /) -> ads.CDockFocusController"
+          ],
+          "dockWidgetAboutToBeRemoved": [],
+          "dockWidgetAdded": [],
+          "dockWidgetRemoved": [],
+          "dockWidgetToolBarIconSize": [
+            "(self, State: ads.CDockWidget.eState, /) -> PySide6.QtCore.QSize"
+          ],
+          "dockWidgetToolBarStyle": [
+            "(self, State: ads.CDockWidget.eState, /) -> PySide6.QtCore.Qt.ToolButtonStyle"
+          ],
+          "dockWidgetsMap": [
+            "(self, /) -> Dict[str, ads.CDockWidget]"
+          ],
+          "endLeavingMinimizedState": [
+            "(self, /) -> None"
+          ],
+          "eventFilter": [
+            "(self, obj: PySide6.QtCore.QObject, e: PySide6.QtCore.QEvent, /) -> bool"
+          ],
+          "findDockWidget": [
+            "(self, ObjectName: str, /) -> ads.CDockWidget"
+          ],
+          "floatingContainersTitle": [
+            "() -> str"
+          ],
+          "floatingWidgetCreated": [],
+          "floatingWidgets": [
+            "(self, /) -> List[ads.CFloatingDockContainer]"
+          ],
+          "focusedDockWidget": [
+            "(self, /) -> ads.CDockWidget"
+          ],
+          "focusedDockWidgetChanged": [],
+          "globallyLockedDockWidgetFeatures": [
+            "(self, /) -> ads.CDockWidget.DockWidgetFeature"
+          ],
+          "hideManagerAndFloatingWidgets": [
+            "(self, /) -> None"
+          ],
+          "iconProvider": [
+            "() -> ads.CIconProvider"
+          ],
+          "isApplicationPaletteDark": [
+            "() -> bool"
+          ],
+          "isDesiredStylesheetDark": [
+            "(self, /) -> bool"
+          ],
+          "isLeavingMinimizedState": [
+            "(self, /) -> bool"
+          ],
+          "isRestoringState": [
+            "(self, /) -> bool"
+          ],
+          "loadPerspectives": [
+            "(self, Settings: PySide6.QtCore.QSettings, /) -> None"
+          ],
+          "lockDockWidgetFeaturesGlobally": [
+            "(self, /, Features: ads.CDockWidget.DockWidgetFeature = Instance(ads.CDockWidget.GloballyLockableFeatures)) -> None"
+          ],
+          "notifyFloatingWidgetDrop": [
+            "(self, FloatingWidget: ads.CFloatingDockContainer, /) -> None"
+          ],
+          "notifyWidgetOrAreaRelocation": [
+            "(self, RelocatedWidget: PySide6.QtWidgets.QWidget, /) -> None"
+          ],
+          "openPerspective": [
+            "(self, PerspectiveName: str, /) -> None"
+          ],
+          "openingPerspective": [],
+          "perspectiveListChanged": [],
+          "perspectiveListLoaded": [],
+          "perspectiveNames": [
+            "(self, /) -> List[str]"
+          ],
+          "perspectiveOpened": [],
+          "perspectivesRemoved": [],
+          "raise_": [
+            "(self, /) -> None"
+          ],
+          "registerDockContainer": [
+            "(self, DockContainer: ads.CDockContainerWidget, /) -> None"
+          ],
+          "registerFloatingWidget": [
+            "(self, FloatingWidget: ads.CFloatingDockContainer, /) -> None"
+          ],
+          "removeDockContainer": [
+            "(self, DockContainer: ads.CDockContainerWidget, /) -> None"
+          ],
+          "removeDockWidget": [
+            "(self, Dockwidget: ads.CDockWidget, /) -> None"
+          ],
+          "removeFloatingWidget": [
+            "(self, FloatingWidget: ads.CFloatingDockContainer, /) -> None"
+          ],
+          "removePerspective": [
+            "(self, Name: str, /) -> None"
+          ],
+          "removePerspectives": [
+            "(self, Names: collections.abc.Sequence[str], /) -> None"
+          ],
+          "restoreHiddenFloatingWidgets": [
+            "(self, /) -> None"
+          ],
+          "restoreState": [
+            "(self, state: PySide6.QtCore.QByteArray | bytes | bytearray | memoryview, /, version: int | None = None) -> bool"
+          ],
+          "restoringState": [],
+          "savePerspectives": [
+            "(self, Settings: PySide6.QtCore.QSettings, /) -> None"
+          ],
+          "saveState": [
+            "(self, /, version: int | None = None) -> PySide6.QtCore.QByteArray"
+          ],
+          "setAutoHideConfigFlag": [
+            "(Flag: ads.CDockManager.eAutoHideFlag, /, On: bool = True) -> None"
+          ],
+          "setAutoHideConfigFlags": [
+            "(Flags: ads.CDockManager.eAutoHideFlag, /) -> None"
+          ],
+          "setCentralWidget": [
+            "(self, widget: ads.CDockWidget, /) -> ads.CDockAreaWidget"
+          ],
+          "setColorSchemeMode": [
+            "(self, Mode: ads.CDockManager.ColorSchemeMode, /) -> None"
+          ],
+          "setComponentsFactory": [
+            "(self, Factory: ads.CDockComponentsFactory, /) -> None"
+          ],
+          "setConfigFlag": [
+            "(Flag: ads.CDockManager.eConfigFlag, /, On: bool = True) -> None"
+          ],
+          "setConfigFlags": [
+            "(Flags: ads.CDockManager.eConfigFlag, /) -> None"
+          ],
+          "setConfigParam": [
+            "(Param: ads.CDockManager.eConfigParam, Value: Any, /) -> None"
+          ],
+          "setDockWidgetFocused": [
+            "(self, DockWidget: ads.CDockWidget, /) -> None"
+          ],
+          "setDockWidgetToolBarIconSize": [
+            "(self, IconSize: PySide6.QtCore.QSize, State: ads.CDockWidget.eState, /) -> None"
+          ],
+          "setDockWidgetToolBarStyle": [
+            "(self, Style: PySide6.QtCore.Qt.ToolButtonStyle, State: ads.CDockWidget.eState, /) -> None"
+          ],
+          "setFloatingContainersTitle": [
+            "(Title: str, /) -> None"
+          ],
+          "setSplitterSizes": [
+            "(self, ContainedArea: ads.CDockAreaWidget, sizes: collections.abc.Sequence[int], /) -> None"
+          ],
+          "setViewMenuInsertionOrder": [
+            "(self, Order: ads.CDockManager.eViewMenuInsertionOrder, /) -> None"
+          ],
+          "showEvent": [
+            "(self, event: PySide6.QtGui.QShowEvent, /) -> None"
+          ],
+          "splitterSizes": [
+            "(self, ContainedArea: ads.CDockAreaWidget, /) -> List[int]"
+          ],
+          "startDragDistance": [
+            "() -> int"
+          ],
+          "stateRestored": [],
+          "staticMetaObject": [],
+          "testAutoHideConfigFlag": [
+            "(Flag: ads.CDockManager.eAutoHideFlag, /) -> bool"
+          ],
+          "testConfigFlag": [
+            "(Flag: ads.CDockManager.eConfigFlag, /) -> bool"
+          ],
+          "viewMenu": [
+            "(self, /) -> PySide6.QtWidgets.QMenu"
+          ],
+          "zOrderIndex": [
+            "(self, /) -> int"
+          ]
+        },
+        "signals": [
+          "dockAreaCreated(ads::CDockAreaWidget*)",
+          "dockWidgetAboutToBeRemoved(ads::CDockWidget*)",
+          "dockWidgetAdded(ads::CDockWidget*)",
+          "dockWidgetRemoved(ads::CDockWidget*)",
+          "floatingWidgetCreated(ads::CFloatingDockContainer*)",
+          "focusedDockWidgetChanged(ads::CDockWidget*,ads::CDockWidget*)",
+          "openingPerspective(QString)",
+          "perspectiveListChanged()",
+          "perspectiveListLoaded()",
+          "perspectiveOpened(QString)",
+          "perspectivesRemoved()",
+          "restoringState()",
+          "stateRestored()"
+        ],
+        "enums": {
+          "ColorSchemeMode": [
+            "Dark",
+            "FollowPalette",
+            "Light"
+          ],
+          "eAutoHideFlag": [
+            "AutoHideButtonCheckable",
+            "AutoHideButtonTogglesArea",
+            "AutoHideCloseButtonCollapsesDock",
+            "AutoHideCloseOnOutsideMouseClick",
+            "AutoHideFeatureEnabled",
+            "AutoHideHasCloseButton",
+            "AutoHideHasMinimizeButton",
+            "AutoHideOpenOnDragHover",
+            "AutoHideShowOnMouseOver",
+            "AutoHideSideBarsIconOnly",
+            "DefaultAutoHideConfig",
+            "DockAreaHasAutoHideButton"
+          ],
+          "eConfigFlag": [
+            "ActiveTabHasCloseButton",
+            "AllTabsHaveCloseButton",
+            "AlwaysShowTabs",
+            "DefaultBaseConfig",
+            "DefaultDockAreaButtons",
+            "DefaultNonOpaqueConfig",
+            "DefaultOpaqueConfig",
+            "DisableStylesheet",
+            "DisableTabTextEliding",
+            "DockAreaCloseButtonClosesTab",
+            "DockAreaDynamicTabsMenuButtonVisibility",
+            "DockAreaHasCloseButton",
+            "DockAreaHasTabsMenuButton",
+            "DockAreaHasUndockButton",
+            "DockAreaHideDisabledButtons",
+            "DoubleClickUndocksWidget",
+            "DragPreviewHasWindowFrame",
+            "DragPreviewIsDynamic",
+            "DragPreviewShowsContentPixmap",
+            "EqualSplitOnInsertion",
+            "FloatingContainerForceNativeTitleBar",
+            "FloatingContainerForceQWidgetTitleBar",
+            "FloatingContainerHasWidgetIcon",
+            "FloatingContainerHasWidgetTitle",
+            "FocusHighlighting",
+            "HideSingleCentralWidgetTitleBar",
+            "MiddleMouseButtonClosesTab",
+            "NonOpaqueWithWindowFrame",
+            "OpaqueSplitterResize",
+            "RetainTabSizeWhenCloseButtonHidden",
+            "ShowTabTextOnlyForActiveTab",
+            "TabCloseButtonIsToolButton",
+            "TabsAtBottom",
+            "UseNativeWindows",
+            "XmlAutoFormattingEnabled",
+            "XmlCompressionEnabled"
+          ],
+          "eConfigParam": [
+            "AutoHideOpenOnDragHoverDelay_ms",
+            "ConfigParamCount"
+          ],
+          "eViewMenuInsertionOrder": [
+            "MenuAlphabeticallySorted",
+            "MenuSortedByInsertion"
+          ]
+        }
+      },
+      "CDockOverlay": {
+        "bases": [
+          "PySide6.QtWidgets.QFrame"
+        ],
+        "members": {
+          "allowedAreas": [
+            "(self, /) -> ads.DockWidgetArea"
+          ],
+          "dropAreaUnderCursor": [
+            "(self, /) -> ads.DockWidgetArea",
+            "(self, GlobalPos: PySide6.QtCore.QPoint, /) -> ads.DockWidgetArea"
+          ],
+          "dropOverlayRect": [
+            "(self, /) -> PySide6.QtCore.QRect"
+          ],
+          "dropPreviewEnabled": [
+            "(self, /) -> bool"
+          ],
+          "enableDropPreview": [
+            "(self, Enable: bool, /) -> None"
+          ],
+          "event": [
+            "(self, e: PySide6.QtCore.QEvent, /) -> bool"
+          ],
+          "hideEvent": [
+            "(self, e: PySide6.QtGui.QHideEvent, /) -> None"
+          ],
+          "hideOverlay": [
+            "(self, /) -> None"
+          ],
+          "paintEvent": [
+            "(self, e: PySide6.QtGui.QPaintEvent, /) -> None"
+          ],
+          "setAllowedArea": [
+            "(self, area: ads.DockWidgetArea, Enable: bool, /) -> None"
+          ],
+          "setAllowedAreas": [
+            "(self, areas: ads.DockWidgetArea, /) -> None"
+          ],
+          "showEvent": [
+            "(self, e: PySide6.QtGui.QShowEvent, /) -> None"
+          ],
+          "showOverlay": [
+            "(self, target: PySide6.QtWidgets.QWidget, /) -> ads.DockWidgetArea",
+            "(self, target: PySide6.QtWidgets.QWidget, GlobalPos: PySide6.QtCore.QPoint, /) -> ads.DockWidgetArea"
+          ],
+          "staticMetaObject": [],
+          "tabIndexUnderCursor": [
+            "(self, /) -> int"
+          ],
+          "visibleDropAreaUnderCursor": [
+            "(self, /) -> ads.DockWidgetArea",
+            "(self, GlobalPos: PySide6.QtCore.QPoint, /) -> ads.DockWidgetArea"
+          ]
+        },
+        "signals": [],
+        "enums": {
+          "eMode": [
+            "ModeContainerOverlay",
+            "ModeDockAreaOverlay"
+          ]
+        }
+      },
+      "CDockOverlayCross": {
+        "bases": [
+          "PySide6.QtWidgets.QWidget"
+        ],
+        "members": {
+          "cursorLocation": [
+            "(self, /) -> ads.DockWidgetArea",
+            "(self, GlobalPos: PySide6.QtCore.QPoint, /) -> ads.DockWidgetArea"
+          ],
+          "event": [
+            "(self, e: PySide6.QtCore.QEvent, /) -> bool"
+          ],
+          "iconColor": [
+            "(self, /) -> PySide6.QtGui.QColor",
+            "(self, ColorIndex: ads.CDockOverlayCross.eIconColor, /) -> PySide6.QtGui.QColor"
+          ],
+          "iconColors": [
+            "(self, /) -> str"
+          ],
+          "reset": [
+            "(self, /) -> None"
+          ],
+          "setAreaWidgets": [
+            "(self, widgets: Dict[ads.DockWidgetArea, PySide6.QtWidgets.QWidget], /) -> None"
+          ],
+          "setIconArrowColor": [
+            "(self, Color: PySide6.QtGui.QColor | str | PySide6.QtGui.QRgba64 | Any | PySide6.QtCore.Qt.GlobalColor | int, /) -> None"
+          ],
+          "setIconBackgroundColor": [
+            "(self, Color: PySide6.QtGui.QColor | str | PySide6.QtGui.QRgba64 | Any | PySide6.QtCore.Qt.GlobalColor | int, /) -> None"
+          ],
+          "setIconColor": [
+            "(self, ColorIndex: ads.CDockOverlayCross.eIconColor, Color: PySide6.QtGui.QColor | str | PySide6.QtGui.QRgba64 | Any | PySide6.QtCore.Qt.GlobalColor | int, /) -> None"
+          ],
+          "setIconColors": [
+            "(self, Colors: str, /) -> None"
+          ],
+          "setIconFrameColor": [
+            "(self, Color: PySide6.QtGui.QColor | str | PySide6.QtGui.QRgba64 | Any | PySide6.QtCore.Qt.GlobalColor | int, /) -> None"
+          ],
+          "setIconOverlayColor": [
+            "(self, Color: PySide6.QtGui.QColor | str | PySide6.QtGui.QRgba64 | Any | PySide6.QtCore.Qt.GlobalColor | int, /) -> None"
+          ],
+          "setIconShadowColor": [
+            "(self, Color: PySide6.QtGui.QColor | str | PySide6.QtGui.QRgba64 | Any | PySide6.QtCore.Qt.GlobalColor | int, /) -> None"
+          ],
+          "setupOverlayCross": [
+            "(self, Mode: ads.CDockOverlay.eMode, /) -> None"
+          ],
+          "showEvent": [
+            "(self, e: PySide6.QtGui.QShowEvent, /) -> None"
+          ],
+          "staticMetaObject": [],
+          "updateOverlayIcons": [
+            "(self, /) -> None"
+          ],
+          "updatePosition": [
+            "(self, /) -> None"
+          ]
+        },
+        "signals": [],
+        "enums": {
+          "eIconColor": [
+            "ArrowColor",
+            "FrameColor",
+            "OverlayColor",
+            "ShadowColor",
+            "WindowBackgroundColor"
+          ]
+        }
+      },
+      "CDockSplitter": {
+        "bases": [
+          "PySide6.QtWidgets.QSplitter"
+        ],
+        "members": {
+          "firstWidget": [
+            "(self, /) -> PySide6.QtWidgets.QWidget"
+          ],
+          "hasVisibleContent": [
+            "(self, /) -> bool"
+          ],
+          "isResizingWithContainer": [
+            "(self, /) -> bool"
+          ],
+          "lastWidget": [
+            "(self, /) -> PySide6.QtWidgets.QWidget"
+          ],
+          "staticMetaObject": []
+        },
+        "signals": [],
+        "enums": {}
+      },
+      "CDockWidget": {
+        "bases": [
+          "PySide6.QtWidgets.QFrame"
+        ],
+        "members": {
+          "autoHideDockContainer": [
+            "(self, /) -> ads.CAutoHideDockContainer"
+          ],
+          "autoHideLocation": [
+            "(self, /) -> ads.SideBarLocation"
+          ],
+          "closeDockWidget": [
+            "(self, /) -> None"
+          ],
+          "closeDockWidgetInternal": [
+            "(self, /, ForceClose: bool = False) -> bool"
+          ],
+          "closeRequested": [],
+          "closed": [],
+          "createDefaultToolBar": [
+            "(self, /) -> PySide6.QtWidgets.QToolBar"
+          ],
+          "deleteDockWidget": [
+            "(self, /) -> None"
+          ],
+          "dockAreaWidget": [
+            "(self, /) -> ads.CDockAreaWidget"
+          ],
+          "dockContainer": [
+            "(self, /) -> ads.CDockContainerWidget"
+          ],
+          "dockManager": [
+            "(self, /) -> ads.CDockManager"
+          ],
+          "emitTopLevelChanged": [
+            "(self, Floating: bool, /) -> None"
+          ],
+          "emitTopLevelEventForWidget": [
+            "(TopLevelDockWidget: ads.CDockWidget, Floating: bool, /) -> None"
+          ],
+          "event": [
+            "(self, e: PySide6.QtCore.QEvent, /) -> bool"
+          ],
+          "features": [
+            "(self, /) -> ads.CDockWidget.DockWidgetFeature"
+          ],
+          "featuresChanged": [],
+          "flagAsUnassigned": [
+            "(self, /) -> None"
+          ],
+          "floatingDockContainer": [
+            "(self, /) -> ads.CFloatingDockContainer"
+          ],
+          "icon": [
+            "(self, /) -> PySide6.QtGui.QIcon"
+          ],
+          "isAutoHide": [
+            "(self, /) -> bool"
+          ],
+          "isCentralWidget": [
+            "(self, /) -> bool"
+          ],
+          "isClosed": [
+            "(self, /) -> bool"
+          ],
+          "isCurrentTab": [
+            "(self, /) -> bool"
+          ],
+          "isFloating": [
+            "(self, /) -> bool"
+          ],
+          "isFullScreen": [
+            "(self, /) -> bool"
+          ],
+          "isInFloatingContainer": [
+            "(self, /) -> bool"
+          ],
+          "isTabbed": [
+            "(self, /) -> bool"
+          ],
+          "minimumSizeHint": [
+            "(self, /) -> PySide6.QtCore.QSize"
+          ],
+          "minimumSizeHintMode": [
+            "(self, /) -> ads.CDockWidget.eMinimumSizeHintMode"
+          ],
+          "notifyFeaturesChanged": [
+            "(self, /) -> None"
+          ],
+          "preferredAutoHideSideBarLocation": [
+            "(self, /) -> ads.SideBarLocation"
+          ],
+          "raise_": [
+            "(self, /) -> None"
+          ],
+          "requestCloseDockWidget": [
+            "(self, /) -> None"
+          ],
+          "saveState": [
+            "(self, Stream: PySide6.QtCore.QXmlStreamWriter, /) -> None"
+          ],
+          "setAsCurrentTab": [
+            "(self, /) -> None"
+          ],
+          "setAutoHide": [
+            "(self, Enable: bool, /, Location: ads.SideBarLocation = Instance(ads.SideBarLocation.SideBarNone), TabIndex: int = -1) -> None"
+          ],
+          "setClosedState": [
+            "(self, Closed: bool, /) -> None"
+          ],
+          "setDockArea": [
+            "(self, DockArea: ads.CDockAreaWidget, /) -> None"
+          ],
+          "setDockManager": [
+            "(self, DockManager: ads.CDockManager, /) -> None"
+          ],
+          "setFeature": [
+            "(self, flag: ads.CDockWidget.DockWidgetFeature, on: bool, /) -> None"
+          ],
+          "setFeatures": [
+            "(self, features: ads.CDockWidget.DockWidgetFeature, /) -> None"
+          ],
+          "setFloating": [
+            "(self, /) -> None"
+          ],
+          "setIcon": [
+            "(self, Icon: PySide6.QtGui.QIcon | PySide6.QtGui.QPixmap, /) -> None"
+          ],
+          "setMinimumSizeHintMode": [
+            "(self, Mode: ads.CDockWidget.eMinimumSizeHintMode, /) -> None"
+          ],
+          "setPreferredAutoHideSideBarLocation": [
+            "(self, Location: ads.SideBarLocation, /) -> None"
+          ],
+          "setSideTabWidget": [
+            "(self, SideTab: ads.CAutoHideTab, /) -> None"
+          ],
+          "setTabToolTip": [
+            "(self, text: str, /) -> None"
+          ],
+          "setTitleBarActions": [
+            "(self, actions: collections.abc.Sequence[PySide6.QtGui.QAction], /) -> None"
+          ],
+          "setToggleViewAction": [
+            "(self, action: PySide6.QtGui.QAction, /) -> None"
+          ],
+          "setToggleViewActionChecked": [
+            "(self, Checked: bool, /) -> None"
+          ],
+          "setToggleViewActionMode": [
+            "(self, Mode: ads.CDockWidget.eToggleViewActionMode, /) -> None"
+          ],
+          "setToolBar": [
+            "(self, ToolBar: PySide6.QtWidgets.QToolBar, /) -> None"
+          ],
+          "setToolBarIconSize": [
+            "(self, IconSize: PySide6.QtCore.QSize, State: ads.CDockWidget.eState, /) -> None"
+          ],
+          "setToolBarStyle": [
+            "(self, Style: PySide6.QtCore.Qt.ToolButtonStyle, State: ads.CDockWidget.eState, /) -> None"
+          ],
+          "setToolBarStyleSource": [
+            "(self, Source: ads.CDockWidget.eToolBarStyleSource, /) -> None"
+          ],
+          "setWidget": [
+            "(self, widget: PySide6.QtWidgets.QWidget, /, InsertMode: ads.CDockWidget.eInsertMode = Instance(ads.CDockWidget.eInsertMode.AutoScrollArea)) -> None"
+          ],
+          "showFullScreen": [
+            "(self, /) -> None"
+          ],
+          "showNormal": [
+            "(self, /) -> None"
+          ],
+          "sideTabWidget": [
+            "(self, /) -> ads.CAutoHideTab"
+          ],
+          "staticMetaObject": [],
+          "tabWidget": [
+            "(self, /) -> ads.CDockWidgetTab"
+          ],
+          "takeWidget": [
+            "(self, /) -> PySide6.QtWidgets.QWidget"
+          ],
+          "titleBarActions": [
+            "(self, /) -> List[PySide6.QtGui.QAction]"
+          ],
+          "titleChanged": [],
+          "toggleAutoHide": [
+            "(self, /, Location: ads.SideBarLocation = Instance(ads.SideBarLocation.SideBarNone)) -> None"
+          ],
+          "toggleView": [
+            "(self, /, Open: bool = True) -> None"
+          ],
+          "toggleViewAction": [
+            "(self, /) -> PySide6.QtGui.QAction"
+          ],
+          "toggleViewInternal": [
+            "(self, Open: bool, /) -> None"
+          ],
+          "toolBar": [
+            "(self, /) -> PySide6.QtWidgets.QToolBar"
+          ],
+          "toolBarIconSize": [
+            "(self, State: ads.CDockWidget.eState, /) -> PySide6.QtCore.QSize"
+          ],
+          "toolBarStyle": [
+            "(self, State: ads.CDockWidget.eState, /) -> PySide6.QtCore.Qt.ToolButtonStyle"
+          ],
+          "toolBarStyleSource": [
+            "(self, /) -> ads.CDockWidget.eToolBarStyleSource"
+          ],
+          "topLevelChanged": [],
+          "viewToggled": [],
+          "visibilityChanged": [],
+          "widget": [
+            "(self, /) -> PySide6.QtWidgets.QWidget"
+          ]
+        },
+        "signals": [
+          "closeRequested()",
+          "closed()",
+          "featuresChanged(ads::CDockWidget::DockWidgetFeatures)",
+          "titleChanged(QString)",
+          "topLevelChanged(bool)",
+          "viewToggled(bool)",
+          "visibilityChanged(bool)"
+        ],
+        "enums": {
+          "DockWidgetFeature": [
+            "AllDockWidgetFeatures",
+            "CustomCloseHandling",
+            "DefaultDockWidgetFeatures",
+            "DeleteContentOnClose",
+            "DockWidgetAlwaysCloseAndDelete",
+            "DockWidgetClosable",
+            "DockWidgetDeleteOnClose",
+            "DockWidgetFloatable",
+            "DockWidgetFocusable",
+            "DockWidgetForceCloseWithArea",
+            "DockWidgetMovable",
+            "DockWidgetPinnable",
+            "GloballyLockableFeatures",
+            "NoDockWidgetFeatures",
+            "NoTab"
+          ],
+          "eInsertMode": [
+            "AutoScrollArea",
+            "ForceNoScrollArea",
+            "ForceScrollArea"
+          ],
+          "eMinimumSizeHintMode": [
+            "MinimumSizeHintFromContent",
+            "MinimumSizeHintFromContentMinimumSize",
+            "MinimumSizeHintFromDockWidget",
+            "MinimumSizeHintFromDockWidgetMinimumSize"
+          ],
+          "eState": [
+            "StateDocked",
+            "StateFloating",
+            "StateHidden"
+          ],
+          "eToggleViewActionMode": [
+            "ActionModeShow",
+            "ActionModeToggle"
+          ],
+          "eToolBarStyleSource": [
+            "ToolBarStyleFromDockManager",
+            "ToolBarStyleFromDockWidget"
+          ]
+        }
+      },
+      "CDockWidgetTab": {
+        "bases": [
+          "PySide6.QtWidgets.QFrame"
+        ],
+        "members": {
+          "activeTabChanged": [],
+          "buildContextMenu": [
+            "(self, arg__1: PySide6.QtWidgets.QMenu, /) -> PySide6.QtWidgets.QMenu"
+          ],
+          "clicked": [],
+          "closeOtherTabsRequested": [],
+          "closeRequested": [],
+          "contextMenuEvent": [
+            "(self, ev: PySide6.QtGui.QContextMenuEvent, /) -> None"
+          ],
+          "dockAreaWidget": [
+            "(self, /) -> ads.CDockAreaWidget"
+          ],
+          "dockWidget": [
+            "(self, /) -> ads.CDockWidget"
+          ],
+          "dragState": [
+            "(self, /) -> ads.eDragState"
+          ],
+          "elidedChanged": [],
+          "event": [
+            "(self, e: PySide6.QtCore.QEvent, /) -> bool"
+          ],
+          "icon": [
+            "(self, /) -> PySide6.QtGui.QIcon"
+          ],
+          "iconSize": [
+            "(self, /) -> PySide6.QtCore.QSize"
+          ],
+          "isActiveTab": [
+            "(self, /) -> bool"
+          ],
+          "isClosable": [
+            "(self, /) -> bool"
+          ],
+          "isTitleElided": [
+            "(self, /) -> bool"
+          ],
+          "mouseDoubleClickEvent": [
+            "(self, event: PySide6.QtGui.QMouseEvent, /) -> None"
+          ],
+          "mouseMoveEvent": [
+            "(self, ev: PySide6.QtGui.QMouseEvent, /) -> None"
+          ],
+          "mousePressEvent": [
+            "(self, ev: PySide6.QtGui.QMouseEvent, /) -> None"
+          ],
+          "mouseReleaseEvent": [
+            "(self, ev: PySide6.QtGui.QMouseEvent, /) -> None"
+          ],
+          "moved": [],
+          "setActiveTab": [
+            "(self, active: bool, /) -> None"
+          ],
+          "setDockAreaWidget": [
+            "(self, DockArea: ads.CDockAreaWidget, /) -> None"
+          ],
+          "setElideMode": [
+            "(self, mode: PySide6.QtCore.Qt.TextElideMode, /) -> None"
+          ],
+          "setIcon": [
+            "(self, Icon: PySide6.QtGui.QIcon | PySide6.QtGui.QPixmap, /) -> None"
+          ],
+          "setIconSize": [
+            "(self, Size: PySide6.QtCore.QSize, /) -> None"
+          ],
+          "setText": [
+            "(self, title: str, /) -> None"
+          ],
+          "setVisible": [
+            "(self, visible: bool, /) -> None"
+          ],
+          "staticMetaObject": [],
+          "text": [
+            "(self, /) -> str"
+          ],
+          "updateStyle": [
+            "(self, /) -> None"
+          ]
+        },
+        "signals": [
+          "activeTabChanged()",
+          "clicked()",
+          "closeOtherTabsRequested()",
+          "closeRequested()",
+          "elidedChanged(bool)",
+          "moved(QPoint)"
+        ],
+        "enums": {}
+      },
+      "CDockingStateReader": {
+        "bases": [
+          "PySide6.QtCore.QXmlStreamReader"
+        ],
+        "members": {
+          "fileVersion": [
+            "(self, /) -> int"
+          ],
+          "setFileVersion": [
+            "(self, FileVersion: int, /) -> None"
+          ]
+        },
+        "signals": [],
+        "enums": {}
+      },
+      "CElidingLabel": {
+        "bases": [
+          "PySide6.QtWidgets.QLabel"
+        ],
+        "members": {
+          "clicked": [],
+          "doubleClicked": [],
+          "elideMode": [
+            "(self, /) -> PySide6.QtCore.Qt.TextElideMode"
+          ],
+          "elidedChanged": [],
+          "isElided": [
+            "(self, /) -> bool"
+          ],
+          "minimumSizeHint": [
+            "(self, /) -> PySide6.QtCore.QSize"
+          ],
+          "mouseDoubleClickEvent": [
+            "(self, ev: PySide6.QtGui.QMouseEvent, /) -> None"
+          ],
+          "mouseReleaseEvent": [
+            "(self, event: PySide6.QtGui.QMouseEvent, /) -> None"
+          ],
+          "resizeEvent": [
+            "(self, event: PySide6.QtGui.QResizeEvent, /) -> None"
+          ],
+          "setElideMode": [
+            "(self, mode: PySide6.QtCore.Qt.TextElideMode, /) -> None"
+          ],
+          "setText": [
+            "(self, text: str, /) -> None"
+          ],
+          "sizeHint": [
+            "(self, /) -> PySide6.QtCore.QSize"
+          ],
+          "staticMetaObject": [],
+          "text": [
+            "(self, /) -> str"
+          ]
+        },
+        "signals": [
+          "clicked()",
+          "doubleClicked()",
+          "elidedChanged(bool)"
+        ],
+        "enums": {}
+      },
+      "CFloatingDockContainer": {
+        "bases": [
+          "PySide6.QtWidgets.QWidget",
+          "ads.IFloatingWidget"
+        ],
+        "members": {
+          "changeEvent": [
+            "(self, event: PySide6.QtCore.QEvent, /) -> None"
+          ],
+          "closeEvent": [
+            "(self, event: PySide6.QtGui.QCloseEvent, /) -> None"
+          ],
+          "deleteContent": [
+            "(self, /) -> None"
+          ],
+          "dockContainer": [
+            "(self, /) -> ads.CDockContainerWidget"
+          ],
+          "dockWidgets": [
+            "(self, /) -> List[ads.CDockWidget]"
+          ],
+          "finishDragging": [
+            "(self, /) -> None"
+          ],
+          "finishDropOperation": [
+            "(self, /) -> None"
+          ],
+          "hasTopLevelDockWidget": [
+            "(self, /) -> bool"
+          ],
+          "hideEvent": [
+            "(self, event: PySide6.QtGui.QHideEvent, /) -> None"
+          ],
+          "initFloatingGeometry": [
+            "(self, DragStartMousePos: PySide6.QtCore.QPoint, Size: PySide6.QtCore.QSize, /) -> None"
+          ],
+          "isClosable": [
+            "(self, /) -> bool"
+          ],
+          "isDraggingActive": [
+            "(self, /) -> bool"
+          ],
+          "moveFloating": [
+            "(self, /) -> None"
+          ],
+          "nativeEvent": [
+            "(self, eventType: PySide6.QtCore.QByteArray | bytes | bytearray | memoryview, message: int, /) -> object"
+          ],
+          "showEvent": [
+            "(self, event: PySide6.QtGui.QShowEvent, /) -> None"
+          ],
+          "startDragging": [
+            "(self, DragStartMousePos: PySide6.QtCore.QPoint, Size: PySide6.QtCore.QSize, MouseEventHandler: PySide6.QtWidgets.QWidget, /) -> None"
+          ],
+          "startFloating": [
+            "(self, DragStartMousePos: PySide6.QtCore.QPoint, Size: PySide6.QtCore.QSize, DragState: ads.eDragState, MouseEventHandler: PySide6.QtWidgets.QWidget, /) -> None"
+          ],
+          "startPlatformDrag": [
+            "(FloatingWidget: ads.CFloatingDockContainer, GlobalPressPos: PySide6.QtCore.QPoint, DragSource: PySide6.QtWidgets.QWidget, /, DragOffset: PySide6.QtCore.QPoint | None = None) -> PySide6.QtCore.Qt.DropAction"
+          ],
+          "staticMetaObject": [],
+          "topLevelDockWidget": [
+            "(self, /) -> ads.CDockWidget"
+          ],
+          "updateWindowTitle": [
+            "(self, /) -> None"
+          ],
+          "waylandMoveOrLeaveInWindowPreview": [
+            "(Preview: ads.CFloatingDragPreview, SourceWindow: PySide6.QtWidgets.QWidget, GlobalPos: PySide6.QtCore.QPoint, /) -> bool"
+          ],
+          "windowHandle": [
+            "(self, /) -> PySide6.QtGui.QWindow"
+          ]
+        },
+        "signals": [],
+        "enums": {}
+      },
+      "CFloatingDragPreview": {
+        "bases": [
+          "PySide6.QtWidgets.QWidget",
+          "ads.IFloatingWidget"
+        ],
+        "members": {
+          "cancelDraggingSilently": [
+            "(self, /) -> None"
+          ],
+          "cleanupAutoHideContainerWidget": [
+            "(self, ContainerDropArea: ads.DockWidgetArea, /) -> None"
+          ],
+          "draggingCanceled": [],
+          "eventFilter": [
+            "(self, watched: PySide6.QtCore.QObject, event: PySide6.QtCore.QEvent, /) -> bool"
+          ],
+          "finishDragging": [
+            "(self, /) -> None"
+          ],
+          "moveFloating": [
+            "(self, /) -> None",
+            "(self, GlobalPos: PySide6.QtCore.QPoint, /) -> None"
+          ],
+          "paintEvent": [
+            "(self, e: PySide6.QtGui.QPaintEvent, /) -> None"
+          ],
+          "setSourceContainer": [
+            "(self, Container: ads.CDockContainerWidget, /) -> None"
+          ],
+          "startFloating": [
+            "(self, DragStartMousePos: PySide6.QtCore.QPoint, Size: PySide6.QtCore.QSize, DragState: ads.eDragState, MouseEventHandler: PySide6.QtWidgets.QWidget, /) -> None"
+          ],
+          "staticMetaObject": []
+        },
+        "signals": [
+          "draggingCanceled()"
+        ],
+        "enums": {}
+      },
+      "CIconProvider": {
+        "bases": [
+          "Shiboken.Object"
+        ],
+        "members": {
+          "customIcon": [
+            "(self, IconId: ads.eIcon, /) -> PySide6.QtGui.QIcon"
+          ],
+          "registerCustomIcon": [
+            "(self, IconId: ads.eIcon, icon: PySide6.QtGui.QIcon | PySide6.QtGui.QPixmap, /) -> None"
+          ]
+        },
+        "signals": [],
+        "enums": {}
+      },
+      "CPushButton": {
+        "bases": [
+          "PySide6.QtWidgets.QPushButton"
+        ],
+        "members": {
+          "buttonOrientation": [
+            "(self, /) -> ads.CPushButton.Orientation"
+          ],
+          "paintEvent": [
+            "(self, event: PySide6.QtGui.QPaintEvent, /) -> None"
+          ],
+          "setButtonOrientation": [
+            "(self, orientation: ads.CPushButton.Orientation, /) -> None"
+          ],
+          "sizeHint": [
+            "(self, /) -> PySide6.QtCore.QSize"
+          ],
+          "staticMetaObject": []
+        },
+        "signals": [],
+        "enums": {
+          "Orientation": [
+            "Horizontal",
+            "VerticalBottomToTop",
+            "VerticalTopToBottom"
+          ]
+        }
+      },
+      "CResizeHandle": {
+        "bases": [
+          "PySide6.QtWidgets.QFrame"
+        ],
+        "members": {
+          "handlePostion": [
+            "(self, /) -> PySide6.QtCore.Qt.Edge"
+          ],
+          "isResizing": [
+            "(self, /) -> bool"
+          ],
+          "mouseMoveEvent": [
+            "(self, arg__1: PySide6.QtGui.QMouseEvent, /) -> None"
+          ],
+          "mousePressEvent": [
+            "(self, arg__1: PySide6.QtGui.QMouseEvent, /) -> None"
+          ],
+          "mouseReleaseEvent": [
+            "(self, arg__1: PySide6.QtGui.QMouseEvent, /) -> None"
+          ],
+          "opaqueResize": [
+            "(self, /) -> bool"
+          ],
+          "orientation": [
+            "(self, /) -> PySide6.QtCore.Qt.Orientation"
+          ],
+          "setHandlePosition": [
+            "(self, HandlePosition: PySide6.QtCore.Qt.Edge, /) -> None"
+          ],
+          "setMaxResizeSize": [
+            "(self, MaxSize: int, /) -> None"
+          ],
+          "setMinResizeSize": [
+            "(self, MinSize: int, /) -> None"
+          ],
+          "setOpaqueResize": [
+            "(self, /, opaque: bool = True) -> None"
+          ],
+          "sizeHint": [
+            "(self, /) -> PySide6.QtCore.QSize"
+          ],
+          "staticMetaObject": []
+        },
+        "signals": [],
+        "enums": {}
+      },
+      "CSpacerWidget": {
+        "bases": [
+          "PySide6.QtWidgets.QWidget"
+        ],
+        "members": {
+          "minimumSizeHint": [
+            "(self, /) -> PySide6.QtCore.QSize"
+          ],
+          "sizeHint": [
+            "(self, /) -> PySide6.QtCore.QSize"
+          ],
+          "staticMetaObject": []
+        },
+        "signals": [],
+        "enums": {}
+      },
+      "CTitleBarButton": {
+        "bases": [
+          "PySide6.QtWidgets.QToolButton"
+        ],
+        "members": {
+          "buttonId": [
+            "(self, /) -> ads.TitleBarButton"
+          ],
+          "event": [
+            "(self, ev: PySide6.QtCore.QEvent, /) -> bool"
+          ],
+          "isInAutoHideArea": [
+            "(self, /) -> bool"
+          ],
+          "setShowInTitleBar": [
+            "(self, Show: bool, /) -> None"
+          ],
+          "setVisible": [
+            "(self, visible: bool, /) -> None"
+          ],
+          "staticMetaObject": [],
+          "titleBar": [
+            "(self, /) -> ads.CDockAreaTitleBar"
+          ]
+        },
+        "signals": [],
+        "enums": {}
+      },
+      "IFloatingWidget": {
+        "bases": [
+          "Shiboken.Object"
+        ],
+        "members": {
+          "finishDragging": [
+            "(self, /) -> None"
+          ],
+          "moveFloating": [
+            "(self, /) -> None"
+          ],
+          "startFloating": [
+            "(self, DragStartMousePos: PySide6.QtCore.QPoint, Size: PySide6.QtCore.QSize, DragState: ads.eDragState, MouseEventHandler: PySide6.QtWidgets.QWidget, /) -> None"
+          ]
+        },
+        "signals": [],
+        "enums": {}
+      }
+    },
+    "enums": {
+      "DockWidgetArea": [
+        "AllDockAreas",
+        "AutoHideDockAreas",
+        "BottomAutoHideArea",
+        "BottomDockWidgetArea",
+        "CenterDockWidgetArea",
+        "InvalidDockWidgetArea",
+        "LeftAutoHideArea",
+        "LeftDockWidgetArea",
+        "NoDockWidgetArea",
+        "OuterDockAreas",
+        "RightAutoHideArea",
+        "RightDockWidgetArea",
+        "TopAutoHideArea",
+        "TopDockWidgetArea"
+      ],
+      "SideBarLocation": [
+        "SideBarBottom",
+        "SideBarLeft",
+        "SideBarNone",
+        "SideBarRight",
+        "SideBarTop"
+      ],
+      "TitleBarButton": [
+        "TitleBarButtonAutoHide",
+        "TitleBarButtonClose",
+        "TitleBarButtonMinimize",
+        "TitleBarButtonTabsMenu",
+        "TitleBarButtonUndock"
+      ],
+      "eBitwiseOperator": [
+        "BitwiseAnd",
+        "BitwiseOr"
+      ],
+      "eDragState": [
+        "DraggingFloatingWidget",
+        "DraggingInactive",
+        "DraggingMousePressed",
+        "DraggingTab"
+      ],
+      "eIcon": [
+        "AutoHideIcon",
+        "DockAreaCloseIcon",
+        "DockAreaMenuIcon",
+        "DockAreaMinimizeIcon",
+        "DockAreaUndockIcon",
+        "IconCount",
+        "TabCloseIcon"
+      ],
+      "eTabIndex": [
+        "TabDefaultInsertIndex",
+        "TabInvalidIndex"
+      ]
+    }
+  },
+  "source": {
+    "distribution": "pyside6-qtads",
+    "version": "5.1.1.1",
+    "pyside6": "6.12.0"
+  }
+}

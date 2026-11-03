@@ -24,10 +24,31 @@ set(QTADS_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../extern/qtads/src)
 set(GENERATED_DIR ${CMAKE_CURRENT_BINARY_DIR}/pyside6_qtads_borco/_pyside6_qtads_borco)
 set(GENERATED_SOURCES
     ${GENERATED_DIR}/ads_wrapper.cpp
+    ${GENERATED_DIR}/ads_cautohidedockcontainer_wrapper.cpp
+    ${GENERATED_DIR}/ads_cautohidesidebar_wrapper.cpp
+    ${GENERATED_DIR}/ads_cautohidetab_wrapper.cpp
+    ${GENERATED_DIR}/ads_cdockareatabbar_wrapper.cpp
+    ${GENERATED_DIR}/ads_cdockareatitlebar_wrapper.cpp
     ${GENERATED_DIR}/ads_cdockareawidget_wrapper.cpp
+    ${GENERATED_DIR}/ads_cdockcomponentsfactory_wrapper.cpp
     ${GENERATED_DIR}/ads_cdockcontainerwidget_wrapper.cpp
+    ${GENERATED_DIR}/ads_cdockfocuscontroller_wrapper.cpp
+    ${GENERATED_DIR}/ads_cdockingstatereader_wrapper.cpp
     ${GENERATED_DIR}/ads_cdockmanager_wrapper.cpp
+    ${GENERATED_DIR}/ads_cdockoverlay_wrapper.cpp
+    ${GENERATED_DIR}/ads_cdockoverlaycross_wrapper.cpp
+    ${GENERATED_DIR}/ads_cdocksplitter_wrapper.cpp
     ${GENERATED_DIR}/ads_cdockwidget_wrapper.cpp
+    ${GENERATED_DIR}/ads_cdockwidgettab_wrapper.cpp
+    ${GENERATED_DIR}/ads_celidinglabel_wrapper.cpp
+    ${GENERATED_DIR}/ads_cfloatingdockcontainer_wrapper.cpp
+    ${GENERATED_DIR}/ads_cfloatingdragpreview_wrapper.cpp
+    ${GENERATED_DIR}/ads_ciconprovider_wrapper.cpp
+    ${GENERATED_DIR}/ads_cpushbutton_wrapper.cpp
+    ${GENERATED_DIR}/ads_cresizehandle_wrapper.cpp
+    ${GENERATED_DIR}/ads_cspacerwidget_wrapper.cpp
+    ${GENERATED_DIR}/ads_ctitlebarbutton_wrapper.cpp
+    ${GENERATED_DIR}/ads_ifloatingwidget_wrapper.cpp
     ${GENERATED_DIR}/_pyside6_qtads_borco_module_wrapper.cpp
 )
 

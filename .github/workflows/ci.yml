@@ -77,9 +77,8 @@ jobs:
           QT_QPA_PLATFORM: offscreen
         run: uv run pytest
 
-      # pyright joins this step with #2, once the extension has generated
-      # .pyi stubs (tools/generate_pyi.py); until then it can't resolve it.
       - name: Lint
         run: |
           uv run ruff check .
           uv run ruff format --check .
+          uv run pyright
