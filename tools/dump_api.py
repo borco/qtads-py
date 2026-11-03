@@ -32,10 +32,14 @@ MODULE_PREFIX_RE = re.compile(
     r"\b(?:PySide6QtAds\.PySide6QtAds|pyside6_qtads_borco\._pyside6_qtads_borco|PySide6QtAds)\."
 )
 
+# Python 3.13 writes `typing.Any` inside a `X | Y` union where 3.14 writes `Any`.
+TYPING_PREFIX_RE = re.compile(r"\btyping\.")
+
 
 def __normalise(text: str) -> str:
-    """Drop the binding's own module path from type names, so both bindings' signatures compare equal."""
-    return MODULE_PREFIX_RE.sub("", text)
+    """Drop the binding's own module path and `typing.` from type names, so both bindings' signatures compare
+    equal, whichever Python each was dumped with."""
+    return TYPING_PREFIX_RE.sub("", MODULE_PREFIX_RE.sub("", text))
 
 
 def __signatures(member: Any) -> list[str]:
