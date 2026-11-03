@@ -40,4 +40,5 @@ nav:
   - Home: index.md
   - Development:
       - Build instructions: build.md
+      - Compatibility with pyside6-qtads: compatibility.md
   - PyPI: https://pypi.org/project/pyside6-qtads-borco/

@@ -1,13 +1,12 @@
-.PHONY: setup lint format test clean clean-setup configure build install docs-serve qa
+.PHONY: setup lint format test clean clean-setup configure build install docs-serve qa stubs api-snapshot
 
 setup:
 	uv sync
 
-# pyright isn't run yet: the extension has no .pyi stub until #2 adds
-# tools/generate_pyi.py, so `import ._pyside6_qtads_borco` can't be resolved.
 lint:
 	uv run ruff check .
 	uv run ruff format --check .
+	uv run pyright
 
 # Serve the docs site locally with live-reload (http://127.0.0.1:8000/).
 docs-serve:
@@ -41,5 +40,20 @@ build: configure
 
 install: build
 	cmake --install build/venv --component python
+
+# Regenerate src/pyside6_qtads_borco/_pyside6_qtads_borco.pyi (see
+# tools/generate_pyi.py). Run after `make install` / `uv sync
+# --reinstall-package pyside6-qtads-borco` whenever bindings.xml/bindings.h
+# change the public API.
+stubs:
+	uv run python tools/generate_pyi.py
+
+# Re-snapshot PyPI pyside6-qtads' API for tests/test_api_superset.py, in a
+# throwaway env (its exact PySide6 pin needn't match ours). Bump the version
+# when pyside6-qtads releases one for a newer QtAds than ours.
+PYSIDE6_QTADS_VERSION := 5.1.1.1
+api-snapshot:
+	uv run --isolated --no-project --with pyside6-qtads==$(PYSIDE6_QTADS_VERSION) \
+		python tools/dump_api.py PySide6QtAds pyside6-qtads tests/data/pyside6_qtads_api.json
 
 qa: format test lint
