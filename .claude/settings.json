@@ -1,0 +1,11 @@
+{
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "verbose": true,
+  "showThinkingSummaries": true,
+  "enabledPlugins": {
+    "qt-development-skills@claude-plugins-official": true
+  }
+}
