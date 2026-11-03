@@ -26,7 +26,13 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
-          version: "6.11.1"
+          # Must equal the PySide6 version in uv.lock. On Linux this action
+          # puts the SDK's lib/ on LD_LIBRARY_PATH, so PySide6 loads the
+          # SDK's Qt instead of its own, and Qt's private API (which PySide6
+          # and QtAds' Qt6::GuiPrivate use) is tagged with the exact patch
+          # version: a mismatch fails at import with an undefined
+          # QtPrivate_6_11_N symbol.
+          version: "6.11.3"
           # aqtinstall 3.3.* can't locate Qt 6.11+ on Windows - the online
           # repo dropped the combined qt6_XXXX/qt6_XXXX/Updates.xml in favor
           # of per-arch dirs (miurahr/aqtinstall#959). Use the patched
