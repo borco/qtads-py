@@ -49,6 +49,11 @@ for a QtAds at least as new as ours.
 
 ## Not deviations
 
+- **Platform-specific API.** The snapshot is dumped on Windows, and QtAds declares a few things differently on other
+  platforms: `CDockAreaWidget.event` and `CFloatingDockContainer.nativeEvent` exist only on Windows, and on Linux
+  `CFloatingDockContainer` derives from `QDockWidget` instead of `QWidget`. `pyside6-qtads` differs across platforms
+  in the same way. `PLATFORM_SPECIFIC` in `tests/test_api_superset.py` lists them.
+
 - **Enum values at module level** (`QtAds.TopDockWidgetArea`, ...) are taken from their enum
   (`ads.DockWidgetArea.TopDockWidgetArea`) instead of shiboken's old-style `ads.TopDockWidgetArea`. They're the same
   objects; only type checkers see a difference, and they now see the right type.

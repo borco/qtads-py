@@ -14,6 +14,7 @@ difference.
 
 import importlib.util
 import json
+import sys
 from pathlib import Path
 from typing import Any, Final
 
@@ -26,6 +27,25 @@ DEVIATIONS: Final[dict[str, str]] = {
         "QtAds itself added a required `Floatable` argument after 5.1.1 "
         "(https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/pull/873); "
         "pyside6-qtads gets the same signature once it moves past 5.1.1"
+    ),
+}
+
+# The snapshot was dumped on Windows, and QtAds declares these differently elsewhere (`#ifdef Q_OS_*`), so
+# pyside6-qtads' own wheel for that platform differs in the same way. Not deviations: keyed like DEVIATIONS, with
+# the `sys.platform` values the difference shows up on.
+PLATFORM_SPECIFIC: Final[dict[str, tuple[frozenset[str], str]]] = {
+    "ads.CDockAreaWidget: missing event": (
+        frozenset({"linux", "darwin"}),
+        "its `event()` override is Windows-only (DockAreaWidget.h)",
+    ),
+    "ads.CFloatingDockContainer: missing nativeEvent": (
+        frozenset({"linux", "darwin"}),
+        "its `nativeEvent()` override is Windows-only (FloatingDockContainer.h)",
+    ),
+    "ads.CFloatingDockContainer: bases ['PySide6.QtWidgets.QWidget', 'ads.IFloatingWidget'] "
+    "!= ['PySide6.QtWidgets.QDockWidget', 'ads.IFloatingWidget']": (
+        frozenset({"linux"}),
+        "on Linux it derives from QDockWidget, not QWidget (`tFloatingWidgetBase`, FloatingDockContainer.h)",
     ),
 }
 
@@ -74,7 +94,10 @@ def test_api_is_a_superset_of_pyside6_qtads() -> None:
     ours = __load_dump_api().api_surface("pyside6_qtads_borco")
     found = differences(theirs, ours)
 
-    unrecorded = [difference for difference in found if difference not in DEVIATIONS]
-    stale = [difference for difference in DEVIATIONS if difference not in found]
+    expected = set(DEVIATIONS) | {
+        difference for difference, (platforms, _) in PLATFORM_SPECIFIC.items() if sys.platform in platforms
+    }
+    unrecorded = [difference for difference in found if difference not in expected]
+    stale = [difference for difference in expected if difference not in found]
     assert not unrecorded, "differences from pyside6-qtads not recorded in DEVIATIONS:\n" + "\n".join(unrecorded)
     assert not stale, "DEVIATIONS entries that are no longer differences:\n" + "\n".join(stale)
