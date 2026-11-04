@@ -20,12 +20,12 @@ PySide6 bindings for [Qt Advanced Docking System](https://github.com/githubuser0
 ## Building
 
 Needs [uv](https://docs.astral.sh/uv/), a C++17 compiler (MSVC 2022 on Windows) and a Qt SDK of the same minor as the
-PySide6 that's pinned (6.11), found through `CMAKE_PREFIX_PATH`:
+PySide6 that's pinned (6.12), found through `CMAKE_PREFIX_PATH`:
 
 ```sh
 git clone --recurse-submodules https://github.com/borco/qtads-py.git
 cd qtads-py
-CMAKE_PREFIX_PATH=/path/to/Qt/6.11.1/<arch> uv sync
+CMAKE_PREFIX_PATH=/path/to/Qt/6.12.0/<arch> uv sync
 uv run pytest
 ```
 

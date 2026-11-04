@@ -1,0 +1,85 @@
+name: Bump PySide6
+
+# Daily: when PyPI has a newer PySide6 than uv.lock, open an issue for it and
+# push an issue branch that moves the build to it (tools/bump_pyside6.py, then
+# `uv lock`), and run CI on that branch. A new PySide6 release then costs a
+# review and a `--no-ff` merge; this repo doesn't use pull requests.
+#
+# Pushes made with GITHUB_TOKEN don't trigger other workflows, so this starts
+# ci.yml on the branch itself (workflow_dispatch is allowed).
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: write
+  issues: write
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: astral-sh/setup-uv@v7
+
+      - name: Compare uv.lock's PySide6 with PyPI's
+        id: check
+        run: |
+          current=$(python3 -c "import sys; sys.path.insert(0, 'tools'); import bump_pyside6; print(bump_pyside6.current_version())")
+          latest=$(curl -sf https://pypi.org/pypi/PySide6-Essentials/json | jq -r .info.version)
+          echo "current: $current, latest: $latest"
+          echo "current=$current" >> "$GITHUB_OUTPUT"
+          echo "latest=$latest" >> "$GITHUB_OUTPUT"
+          echo "title=config: bump PySide6 and the Qt SDK to $latest" >> "$GITHUB_OUTPUT"
+          # Only forward: `sort -V` puts the newer one last.
+          if [ "$current" != "$latest" ] && [ "$(printf '%s\n%s\n' "$current" "$latest" | sort -V | tail -1)" = "$latest" ]; then
+            echo "needed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Skip if an issue for it already exists
+        if: steps.check.outputs.needed == 'true'
+        id: existing
+        env:
+          TITLE: ${{ steps.check.outputs.title }}
+        run: |
+          count=$(gh issue list --state all --search "in:title \"$TITLE\"" --json title \
+            --jq "[.[] | select(.title == env.TITLE)] | length")
+          if [ "$count" != "0" ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Bump, open the issue, push its branch and run CI
+        if: steps.check.outputs.needed == 'true' && steps.existing.outputs.exists != 'true'
+        env:
+          CURRENT: ${{ steps.check.outputs.current }}
+          LATEST: ${{ steps.check.outputs.latest }}
+          TITLE: ${{ steps.check.outputs.title }}
+        run: |
+          # Bump first, so that a failure here doesn't leave an issue behind.
+          python3 tools/bump_pyside6.py "$LATEST"
+          uv lock --upgrade-package pyside6-essentials --upgrade-package shiboken6 --upgrade-package shiboken6-generator
+
+          url=$(gh issue create --title "$TITLE" --label maintenance --label XS --label sonnet --body "Automated: PyPI has PySide6 $LATEST (https://pypi.org/project/PySide6-Essentials/$LATEST/), \`uv.lock\` has $CURRENT.
+
+          The branch \`issue/<this issue>/pyside6-$LATEST\` moves the pins, \`uv.lock\` and the Qt SDK version to it (\`tools/bump_pyside6.py\`), and CI was started on it: see the Actions tab. If the Qt SDK $LATEST isn't downloadable yet, re-run CI later.
+
+          To adopt it: review the branch, merge it into \`main\` with \`--no-ff\`, and close this issue. A new minor (not a patch release) starts a new release line of this package: check the README, \`docs/build.md\` and \`CHANGELOG.md\`, which name the minor.
+
+          ## Model
+
+          \`sonnet\`: a mechanical version bump; only a CI failure on the new Qt needs more.")
+          number=${url##*/}
+          branch="issue/$number/pyside6-$LATEST"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git commit -am "refs #$number: $TITLE"
+          git push -u origin "$branch"
+          gh workflow run ci.yml --ref "$branch"
+          gh issue comment "$number" --body "Branch: \`$branch\`. CI: https://github.com/${{ github.repository }}/actions/workflows/ci.yml?query=branch%3A${branch//\//%2F}"
