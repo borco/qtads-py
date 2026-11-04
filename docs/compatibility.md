@@ -60,3 +60,13 @@ for a QtAds at least as new as ours.
 - **QtAds is a shared library**, where `pyside6-qtads` links it statically. Five classes that `pyside6-qtads` binds
   weren't exported from QtAds' DLL (`CTitleBarButton`, `CSpacerWidget`, `CDockingStateReader`, `CDockOverlayCross`,
   `CFloatingDragPreview`), so our QtAds fork exports them. Their Python API is unchanged.
+
+## Known issues
+
+- **Python 3.15 isn't supported yet** ([#9](https://github.com/borco/qtads-py/issues/9)), so `requires-python` is
+  `<3.15`. On 3.15, `CDockManager.eConfigFlag.DisableStylesheet` is 0, so it can't be set or read. QtAds defines it
+  as `0x80000000`, which shiboken turns into the negative `-2147483648`, and Python 3.15's `IntFlag` masks negative
+  members away. `pyside6-qtads` has the same problem, and so do 15 of PySide6's own flags, e.g.
+  `Qt.WindowFullscreenButtonHint`. Reported as [PYSIDE-3507](https://qt-project.atlassian.net/browse/PYSIDE-3507);
+  if it isn't fixed there in time, our QtAds fork can give `eConfigFlag` an unsigned type, which would make the value
+  `2147483648` (a deviation).

@@ -342,7 +342,7 @@ class ads(Shiboken.Object):
             DefaultAutoHideConfig     = 0x503
 
         class eConfigFlag(enum.IntFlag):
-            DisableStylesheet         = 0x0
+            DisableStylesheet         = -2147483648
             ActiveTabHasCloseButton   = 0x1
             DockAreaHasCloseButton    = 0x2
             DockAreaCloseButtonClosesTab = 0x4
