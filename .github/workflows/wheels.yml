@@ -1,0 +1,73 @@
+name: Wheels
+
+# Builds and tests the wheels with cibuildwheel ([tool.cibuildwheel] in
+# pyproject.toml), one cp311-abi3 wheel per platform. Called by publish.yml;
+# run it by hand to try a build without publishing.
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: build (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest, ubuntu-24.04-arm, macos-latest]
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          # extern/qtads to build, extern/pyside6_qtads for the compat tests.
+          submodules: true
+
+      # Windows builds natively against this SDK; Linux and macOS install
+      # their own in cibuildwheel's before-all.
+      - name: Install Qt (Windows)
+        if: runner.os == 'Windows'
+        uses: jurplel/install-qt-action@v4
+        with:
+          # Must equal the PySide6 version in uv.lock (see ci.yml).
+          version: "6.12.0"
+          # aqtinstall 3.3.* can't locate Qt 6.11+ on Windows
+          # (miurahr/aqtinstall#959); use the patched commit until a release
+          # with PR #1000 is out.
+          aqtsource: git+https://github.com/miurahr/aqtinstall.git@8c3695d4a4e1ceabf6a74dc6c79681656dc6b74b
+
+      - name: Set Qt env vars (Windows)
+        if: runner.os == 'Windows'
+        shell: bash
+        run: echo "CMAKE_PREFIX_PATH=$QT_ROOT_DIR" >> "$GITHUB_ENV"
+
+      - name: Build wheels
+        uses: pypa/cibuildwheel@v4.1.0
+        with:
+          output-dir: wheelhouse
+
+      # rehuco's qt-ads.md §7: a vendored libxkbcommon crashes Qt on mouse
+      # motion, so the system's must be used. And QtAds must not reference
+      # Qt's patch-tagged private symbols (QtPrivate_6_x_y), which would tie
+      # the wheel to the exact Qt patch release it was built against.
+      - name: Check the wheel's libraries (Linux)
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          for wheel in wheelhouse/*.whl; do
+            echo "== $wheel"
+            unzip -Z1 "$wheel"
+            if unzip -Z1 "$wheel" | grep -E '(^|/)lib(xcb|xkbcommon|Qt6|pyside6|shiboken6)[^/]*$'; then
+              echo "::error::$wheel bundles a library it must take from the system or PySide6"
+              exit 1
+            fi
+            dir=$(mktemp -d)
+            unzip -q "$wheel" -d "$dir"
+            if nm -D --undefined-only "$dir"/pyside6_qtads_borco/*.so* | grep QtPrivate_; then
+              echo "::error::$wheel references Qt's patch-tagged private API"
+              exit 1
+            fi
+          done
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: wheels-${{ matrix.os }}
+          path: wheelhouse/*.whl

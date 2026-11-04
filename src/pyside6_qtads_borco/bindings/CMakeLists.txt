@@ -90,6 +90,13 @@ elseif(UNIX)
     set_target_properties(_pyside6_qtads_borco PROPERTIES INSTALL_RPATH "$ORIGIN")
     set_target_properties(${QTADS_LIBRARY} PROPERTIES INSTALL_RPATH "$ORIGIN")
 endif()
+# QtAds versions its shared library (libX.so.5.1.1 plus .so.5 and .so
+# symlinks; likewise .dylib), and a wheel stores symlinks as copies: three
+# identical libraries. It's private to this package, so drop the versioning.
+if(UNIX)
+    set_property(TARGET ${QTADS_LIBRARY} PROPERTY VERSION)
+    set_property(TARGET ${QTADS_LIBRARY} PROPERTY SOVERSION)
+endif()
 
 install(TARGETS _pyside6_qtads_borco
     DESTINATION pyside6_qtads_borco
