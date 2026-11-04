@@ -45,9 +45,10 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Software Development :: User Interfaces",
 ]
-# <3.15 until PYSIDE-3507 is fixed one way or the other (#9): on 3.15,
-# CDockManager.eConfigFlag.DisableStylesheet (bit 31) becomes 0.
-requires-python = ">=3.11,<3.15"
+# No upper bound, though 3.15 has a known issue (#9, PYSIDE-3507): uv ignores
+# upper bounds anyway, pip would fall back to older releases, and a PySide6 fix
+# would fix existing wheels, whose metadata would still refuse 3.15.
+requires-python = ">=3.11"
 # Essentials, not the `PySide6` meta-package, which would also pull
 # PySide6-Addons (~175 MB, a full Chromium among it) that QtAds never touches.
 # Only QtCore, QtGui and QtWidgets are used.

@@ -35,8 +35,7 @@ details in [docs/compatibility.md](docs/compatibility.md).
 
 ### Known issues
 
-- Python 3.15 isn't supported yet (#9): there,
-  `CDockManager.eConfigFlag.DisableStylesheet` is 0, a PySide6 problem with
-  flags that have bit 31 set
+- On Python 3.15, `CDockManager.eConfigFlag.DisableStylesheet` is 0 (#9), a
+  PySide6 problem with flags that have bit 31 set
   ([PYSIDE-3507](https://qt-project.atlassian.net/browse/PYSIDE-3507)). See
   [docs/compatibility.md](docs/compatibility.md#known-issues).

@@ -63,8 +63,8 @@ for a QtAds at least as new as ours.
 
 ## Known issues
 
-- **Python 3.15 isn't supported yet** ([#9](https://github.com/borco/qtads-py/issues/9)), so `requires-python` is
-  `<3.15`. On 3.15, `CDockManager.eConfigFlag.DisableStylesheet` is 0, so it can't be set or read. QtAds defines it
+- **On Python 3.15, `CDockManager.eConfigFlag.DisableStylesheet` is 0** ([#9](https://github.com/borco/qtads-py/issues/9)),
+  so it can't be set or read. Everything else works, and the package installs on 3.15. QtAds defines it
   as `0x80000000`, which shiboken turns into the negative `-2147483648`, and Python 3.15's `IntFlag` masks negative
   members away. `pyside6-qtads` has the same problem, and so do 15 of PySide6's own flags, e.g.
   `Qt.WindowFullscreenButtonHint`. Reported as [PYSIDE-3507](https://qt-project.atlassian.net/browse/PYSIDE-3507);
