@@ -9,7 +9,7 @@ see git history for that.
 Differences from PyPI `pyside6-qtads` are listed under **Breaking**, with the
 details in [docs/compatibility.md](docs/compatibility.md).
 
-## [Unreleased]
+## [5.1.1.0] - 2026-11-05
 
 ### Breaking
 

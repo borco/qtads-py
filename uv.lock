@@ -614,7 +614,7 @@ wheels = [
 
 [[package]]
 name = "pyside6-qtads-borco"
-version = "5.1.1.0.dev0"
+version = "5.1.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "pyside6-essentials" },

@@ -18,7 +18,7 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "pyside6-qtads-borco"
-version = "5.1.1.0.dev0"
+version = "5.1.1.0"
 description = "PySide6 bindings for Qt Advanced Docking System, built from a patched fork"
 readme = "README.md"
 license = "LGPL-2.1-or-later"
