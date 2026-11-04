@@ -1,11 +1,9 @@
 name: CI
 
 on:
-  # TEMPORARY (#3): revert before merging.
   push:
-    branches: [issue/3/wheels]
-  push:
-    branches: [main]
+    # TEMPORARY (#3): issue/3/wheels; revert before merging.
+    branches: [main, issue/3/wheels]
   pull_request:
     branches: [main]
   workflow_dispatch:
