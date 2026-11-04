@@ -2,8 +2,7 @@ name: CI
 
 on:
   push:
-    # TEMPORARY (#3): issue/3/wheels; revert before merging.
-    branches: [main, issue/3/wheels]
+    branches: [main]
   pull_request:
     branches: [main]
   workflow_dispatch:

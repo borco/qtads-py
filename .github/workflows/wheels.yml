@@ -4,9 +4,6 @@ name: Wheels
 # pyproject.toml), one cp311-abi3 wheel per platform. Called by publish.yml;
 # run it by hand to try a build without publishing.
 on:
-  # TEMPORARY (#3): revert before merging.
-  push:
-    branches: [issue/3/wheels]
   workflow_call:
   workflow_dispatch:
 
